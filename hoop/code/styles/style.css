@@ -500,3 +500,31 @@
     
 }
 
+/* order info */
+.binf{
+    display: inline-block;
+    padding: 10pt;
+    padding-right: 20pt;
+}
+
+.dowm{
+    position: absolute;
+    margin-top: 30pt;
+    margin-left: -43pt;
+}
+
+.qty{
+    position: absolute;
+    margin-top: -47pt;
+    width: 10pt;
+    margin-left: 20pt;
+}
+
+.addsm{
+    margin-left: 10pt;
+}
+
+.rem{
+    margin-left: 190pt;
+    margin-top: -28pt;
+}
