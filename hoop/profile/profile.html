@@ -64,6 +64,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						jQuery(function($) {
 							$(".swipebox").swipebox();
 						});
+						    $(function () {
+						        $('.add-qty').on('click',function(){
+						            var $qty=$(this).closest('div').find('.qty');
+						            var currentVal = parseInt($qty.val());
+						            if (!isNaN(currentVal)) {
+						                $qty.val(currentVal + 1);
+						            }
+						        });
+						        $('.substract-qty').on('click',function(){
+						            var $qty=$(this).closest('div').find('.qty');
+						            var currentVal = parseInt($qty.val());
+						            if (!isNaN(currentVal) && currentVal > 0) {
+						                $qty.val(currentVal - 1);
+						            }
+						        });
+						    });
 				</script>
 <!-- //swipe box js -->
 
@@ -241,7 +257,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											  <div class="clearfix"></div>
 										  </ul>				  	 
 										<div class="resp-tabs-container">
-											<h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>Statistics</h2><div class="tab-1 resp-tab-content resp-tab-content-active" aria-labelledby="tab_item-0" style="display:block">
+											<h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>Statistics</h2>
+											<div class="tab-1 resp-tab-content resp-tab-content-active" aria-labelledby="tab_item-0" style="display:block">
 												<div class="tab_img">
 													<div class="month-graph">
 														<h3>Activity</h3>
@@ -281,84 +298,64 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													</div>
 												</div>
 											</div>
-											<h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"><span class="resp-arrow"></span>Work Report</h2><div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
+											<h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"><span class="resp-arrow"></span>Work Report</h2>
+											<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 												<div class="tab_img">
 													<div class="month-graph">
 														<div class="goals">
 				
 															<div class="recipes" id="recipes">
-															<h3>Menu</h3>
-															<div class="col-sm-6 goal-left recipe switch-box">
-																   <a href="#" class="switch switch-3">
-															                    <strong></strong>
-															                    <span></span>
-															        </a>
-															  <em class="switch-box-subtitle">
-															  		<div class="goal-img">
-																		<img src="images/r1.jpg" alt=" " />
-																	</div>
-																		<div class="goal-info">
-																		 <div class="container ">
-															                <h4>Spicy Dish</h4>
-															             
-															                <div>
-															                    Optional subtitle can be added here, this message automatically hides when the content is shown!
-															                </div>
-															               
-															              </div>
-																       </div>
-															  </em>
-															
-															</div>
-															
-																<div class="clearfix"></div>    
-															
-																<div class="col-sm-6 goal-left recipe switch-box">
-																   <a href="#" class="switch switch-3">
-															                    <strong></strong>
-															                    <span></span>
-															      </a>
-																  <em class="switch-box-subtitle">
-																  		<div class="goal-img">
-																			<img src="images/r2.jpg" alt=" " />
-																		</div>
-																			<div class="goal-info">
-																			 <div class="container ">
-																                <h4>Spicy Dish</h4>
-																             
-																                <div>
-																                    Optional subtitle can be added here, this message automatically hides when the content is shown!
-																                </div>
-																               
-																              </div>
-																	       </div>
-																  </em>
-																
-																</div>
-																<div class="col-sm-6 goal-left recipe switch-box">
-																  <a href="#" class="switch switch-3">
-															                    <strong></strong>
-															                    <span></span>
-															      </a>
+																<h3>Steak</h3>  
+																<a href="#" class="switch switch-3">
+																           <strong></strong>
+																           <span></span>
+																</a>
+																<div class="divider"></div>
+																<div class="col-sm-6 goal-left switch-box">
+																	  
 																  <em class="switch-box-subtitle">
 																  		<div class="goal-img">
 																			<img src="images/r1.jpg" alt=" " />
 																		</div>
 																			<div class="goal-info">
 																			 <div class="container ">
-																                <h4>Spicy Dish</h4>
-																             
-																                <div>
-																                    Optional subtitle can be added here, this message automatically hides when the content is shown!
+																                <h4>Description: </h4>
+																                <p>Good steak</p>
+																                <p><strong>Price:</strong> $9</p>
+																                <div class="recipe">
+																                		<a href="#" class="switch-3 s4">
+																						    <strong></strong>
+																						    <span></span>
+																						</a>
+																                	<p><strong>Recipe</strong></p>
+																               		<em class="switch-box-subtitle"><p>the recipe</p></em>
+																                	
 																                </div>
-																               
+																                
 																              </div>
 																	       </div>
+																	       <div class="cart-item">
+															                    <h4>
+															                        <a href="#/m" class="add-qty"><i class="fa fa-plus"></i></a>
+															                        <input type="text" value="1" class="qty">
+															                        <a href="#/l" class="substract-qty"><i class="fa fa-minus"></i></a>
+															                    </h4>
+															              </div>
+															              
 																  </em>
 																
 																</div>
-															
-																<div class="clearfix"></div>
+																
+																<div class="clearfix"></div>   
+																<div class="botao">
+																	<a data-cloud9-id="284" href="#/add" class="button button-green button-fullscreen half-top">ADD TO ORDER</a>
+																	<a data-cloud9-id="285" href="#/del" class="button button-red button-fullscreen half-top">REMOVE</a>	
+																</div>
+																
+																<div class="interaction">
+																	<p class="interc">107 likes 42 comments</p>
+																	<a class="agroup">LIKE</a><span class="sdiv"></span><a class="agroup">COMMENT</a><span class="sdiv"></span><a class="agroup">SHARE</a>
+																</div>
 															</div>
 													    </div>
 													</div>
