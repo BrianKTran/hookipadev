@@ -29,7 +29,9 @@ angular.module('starter', ['ionic', 'firebase'])
   $stateProvider
   .state('login', {
     url: '/login',
-    templateUrl: 'templates/login.html'
+    templateUrl: 'templates/login.html',
+    controller: 'loginCtrl',
+    controllerAs: 'hari'
   })
   .state('index', {
     url: '/',
@@ -69,7 +71,7 @@ angular.module('starter', ['ionic', 'firebase'])
   })
   .state('logout', {
     url: '/logout',
-    templateUrl: 'templates/logout.html'
+    templateUrl: 'templates/login.html'
   }) 
   .state('about', {
     url: '/about',
@@ -80,12 +82,16 @@ angular.module('starter', ['ionic', 'firebase'])
   $urlRouterProvider.otherwise('/login');
 })
 
-.controller('mainController', function($state, $timeout){
+
+
+.controller('mainController', function($state, $stateParams){
   /*
   //hide menu on views enter
   $scope.$on('$ionicView.enter', function() {
     // code to run each time view is entered
   }); */
+  
+  console.log($stateParams.result);
   //fake data for developing
   
    this.username="Haribol";
@@ -101,11 +107,70 @@ angular.module('starter', ['ionic', 'firebase'])
    this.address="521 King Street, Melbourne Australia";
    this.about=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere convallis urna id mollis. Maecenas justo tellus, tristique vel dignissim non";
    
-   this.login = function(){
-     console.log("chamou a função");
-     $timeout(function() { // angular is cute and weird at same time, timout is needed to $state.go to properly work
-        $state.go('index');
-     });
-   };
+  this.resultado = $stateParams.result;
+ 
 
-});
+})
+
+
+.controller('loginCtrl', ['$scope', '$state', '$timeout', function($scope, $state, $timeout){
+  //firebase initialization and under that fbauth native firebase sdk
+    var config = {
+        apiKey: "AIzaSyBOV1HSFxqzLjlF7ueo1JFAfY_ZDaiXWFM",
+        authDomain: "hookipafirebase.firebaseapp.com",
+        databaseURL: "https://hookipafirebase.firebaseio.com",
+        storageBucket: "hookipafirebase.appspot.com",
+      };
+    firebase.initializeApp(config);
+    var database = firebase.database();  
+     this.writeUserData= function(userId, name, age) {
+      console.log('ué...'); 
+      firebase.database().ref('users/' + userId).set({
+        username: name,
+        age: age
+      });
+    }
+    
+   var uid=  'ede6Ee3qmxbDeTfNfbDOCwn1ow82' ;
+  
+    var provider = new firebase.auth.FacebookAuthProvider();
+    // fbLogin function 
+    this.fbLogin = function(){
+      console.log('aqui chegou');
+      firebase.auth().signInWithRedirect(provider);
+      
+      firebase.auth().getRedirectResult().then(function(result) {
+      if (result.credential) {
+          // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+          var token = result.credential.accessToken;
+          console.log(token);
+          // ...
+        }
+        
+        // The signed-in user info.
+        var user = result.user;
+        console.log(user);
+    /*    $timeout(function() { // angular is cute and weird at same time, timout is needed to $state.go to properly work
+          $state.go('index', {result: result});
+        }); */
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
+      
+    };
+    
+    
+  
+}])
+
+.controller('profileCtrl', function(){
+  
+ 
+})

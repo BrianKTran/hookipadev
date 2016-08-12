@@ -46,7 +46,8 @@
     
     <script type="text/javascript" src="scripts/jquery.js"></script>
     <script type="text/javascript" src="scripts/plugins.js"></script>
-    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script type="text/javascript" src="scripts/custom.js"></script> 
+
 </head>
 
 <body ng-app="starter">
@@ -54,12 +55,13 @@
 <div class="gallery-fix"></div>         <!-- Fix Gallery next/prev error on Android -->
 <div class="sidebar-tap-close"></div>   <!-- Overlay for content to close Sidebar -->
 
-<div class="header-fixed">
-    <a href="#" class="header-icon-1 open-left-sidebar"><i class="fa fa-navicon"></i></a>
+<div class="header-fixed" >
+    <a href="#" id="abrefecha" class="header-icon-1 open-left-sidebar"><i class="fa fa-navicon"></i></a>
     <a href="index.html" class="header-logo">{{100+8}}</a>
     
 </div>
-<div class="sidebar-left">
+   
+<div id="menues" class="sidebar-left">
     <div class="sidebar-scroll">
         <div class="sidebar-header left-sidebar-header">
             <img class="img-circle border-effect" ng-src='{{hari.image}}' alt="">   
