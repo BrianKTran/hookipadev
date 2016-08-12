@@ -25,8 +25,12 @@ angular.module('starter', ['ionic', 'firebase'])
 })
 
 
-.config(function($stateProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html'
+  })
   .state('index', {
     url: '/',
     templateUrl: 'templates/main.html'
@@ -72,10 +76,13 @@ angular.module('starter', ['ionic', 'firebase'])
     templateUrl: 'templates/about.html'
   });
  
+   // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/login');
 })
 
-.controller('mainController', function(){
+.controller('mainController', function($state){
   //fake data for developing
+   
    this.username="Haribol";
    this.slogan="To feed is to love, GO Vegan";
    this.following= 108;
@@ -83,5 +90,16 @@ angular.module('starter', ['ionic', 'firebase'])
    this.rate = 4.8;
    this.active= true;
    this.image= 'images/pictures/1.jpg';
-  
-})
+   this.profission="Profissional Chef";
+   this.phone="+1 98575108";
+   this.email="myEmail@provider.com";
+   this.address="521 King Street, Melbourne Australia";
+   this.about=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere convallis urna id mollis. Maecenas justo tellus, tristique vel dignissim non";
+   
+   this.login = function(){
+     console.log("chamou a função");
+     e.preventDefault();
+     $state.go('index');
+   };
+
+});

@@ -9,7 +9,7 @@
     <div class="content-fullscreen">
        <div class="page-profile">
             <div class="page-profile-header">
-                <a href="images/pictures/5.jpg" class="show-gallery" title="Profile Image!"><img data-original="images/pictures/5t.jpg" class="preload-image" alt="img"></a>
+                <a href="{{hari.coverpic}}" class="show-gallery" title="Profile Image!"><img data-original="{{hari.coverpic}}" class="preload-image" alt="img"></a>
                 <h3>{{hari.username}}</h3>
                 <em>{{hari.slogan}}</em>
                 <div class="overlay bg-black"></div>
@@ -63,12 +63,12 @@
                         <h4 class="no-bottom">Basic Info</h4>
                         
                         <ul class="font-icon-list">
-						<li><a href="#"><i class="fa fa-briefcase"></i>Professional Chef</a></li>
-                            <li><a href="#"><i class="fa fa-phone"></i>+ 1 234 556 887</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i>mail@domain.com</a></li>
+						<li><a href="#"><i class="fa fa-briefcase"></i>{{hari.profission}}</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>{{hari.phone}}</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i>{{hari.email}}</a></li>
                             <li><a href="#"><i class="fa fa-dollar"></i>See Menu</a></li>
                             <li><a href="#"><i class="fa fa-clock-o"></i>Make Reservation</a></li>
-                            <li><a href="#"><i class="fa fa-location-arrow"></i>521 King Street, Melbourne Australia</a></li>
+                            <li><a href="#"><i class="fa fa-location-arrow"></i>{{hari.address}}</a></li>
                         </ul>
                         <br>
                     </div>
@@ -78,11 +78,9 @@
 					
 					<div class="decoration hide-if-responsive"></div>
                     <div class="sidebar-right-big">
-                        <h4>About Sarah</h4>
+                        <h4>About {{hari.username}}</h4>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere 
-                            convallis urna id mollis. Maecenas justo tellus, tristique vel dignissim non, 
-                            pharetra vitae magna.
+                           {{hari.about}}
                         </p>
                         <div class="sidebar-left-small">
                             <h4>Skills</h4>
@@ -95,23 +93,7 @@
                                 <li>CSS 3 Coding</li>
                             </ul>
                         </div>
-                        <div class="sidebar-right-big">
-                            <h4>Recommandations</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere 
-                                convallis urna id mollis. Maecenas justo tellus, tristique vel dignissim non, 
-                                pharetra vitae magna. Maecenas justo tellus, tristique vel dignissim non, 
-                                pharetra vitae magna.
-                            </p>
-                        </div>
-                        <div class="clear"></div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere 
-                            convallis urna id mollis. Maecenas justo tellus, tristique vel dignissim non, 
-                            pharetra vitae magna. Nunc mattis pretium dictum. In aliquam lacus est, eu 
-                            vestibulum arcu ultrices sed.Nunc mattis pretium dictum. In aliquam lacus est, eu 
-                            vestibulum arcu ultrices sed. 
-                        </p>
+                    
                     </div>
                 </div>
             </div>
