@@ -70,7 +70,7 @@ angular.module('starter', ['ionic', 'firebase'])
   .state('logout', {
     url: '/logout',
     templateUrl: 'templates/logout.html'
-  })
+  }) 
   .state('about', {
     url: '/about',
     templateUrl: 'templates/about.html'
@@ -80,9 +80,14 @@ angular.module('starter', ['ionic', 'firebase'])
   $urlRouterProvider.otherwise('/login');
 })
 
-.controller('mainController', function($state){
+.controller('mainController', function($state, $timeout){
+  /*
+  //hide menu on views enter
+  $scope.$on('$ionicView.enter', function() {
+    // code to run each time view is entered
+  }); */
   //fake data for developing
-   
+  
    this.username="Haribol";
    this.slogan="To feed is to love, GO Vegan";
    this.following= 108;
@@ -98,8 +103,9 @@ angular.module('starter', ['ionic', 'firebase'])
    
    this.login = function(){
      console.log("chamou a função");
-     e.preventDefault();
-     $state.go('index');
+     $timeout(function() { // angular is cute and weird at same time, timout is needed to $state.go to properly work
+        $state.go('index');
+     });
    };
 
 });
