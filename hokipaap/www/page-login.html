@@ -1,64 +1,72 @@
 <!DOCTYPE HTML>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-<link rel="icon" type="image/png" href="images/splash/android-chrome-192x192.png" sizes="192x192">
-<link rel="apple-touch-icon" sizes="196x196" href="images/splash/apple-touch-icon-196x196.png">
-<link rel="apple-touch-icon" sizes="180x180" href="images/splash/apple-touch-icon-180x180.png">
-<link rel="apple-touch-icon" sizes="152x152" href="images/splash/apple-touch-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="144x144" href="images/splash/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="120x120" href="images/splash/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="114x114" href="images/splash/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="76x76" href="images/splash/apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="72x72" href="images/splash/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="60x60" href="images/splash/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="57x57" href="images/splash/apple-touch-icon-57x57.png">
-<link rel="icon" type="image/png" href="images/splash/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="images/splash/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="images/splash/favicon-16x16.png" sizes="16x16">
-<link rel="shortcut icon" href="images/splash/favicon.ico" type="image/x-icon" />
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Raleway:900' rel='stylesheet' type='text/css'>
-
-<title>Hookipa</title>
-
-<link href="styles/style.css" rel="stylesheet" type="text/css">
-<link href="styles/framework.css" rel="stylesheet" type="text/css">
-<link href="styles/font-awesome.css" rel="stylesheet" type="text/css">
-
-<!-- Login/ionic scripts -->
-<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
-<script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyBOV1HSFxqzLjlF7ueo1JFAfY_ZDaiXWFM",
-        authDomain: "hookipafirebase.firebaseapp.com",
-        databaseURL: "https://hookipafirebase.firebaseio.com",
-        storageBucket: "hookipafirebase.appspot.com",
-      };
-      firebase.initializeApp(config);
-      
-      
-</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     
-
-    <!-- ionic/angularjs js -->
-<script src="lib/ionic/js/ionic.bundle.js"></script>
-<script src="lib/firebase/firebase.js"></script>
-<script src="lib/angularfire/dist/angularfire.min.js"></script>
-   
-<!-- cordova script (this will be a 404 during development) -->
-<script src="cordova.js"></script>
-
+    <link rel="icon" type="image/png" href="images/splash/android-chrome-192x192.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="196x196" href="images/splash/apple-touch-icon-196x196.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/splash/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/splash/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/splash/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/splash/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/splash/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/splash/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/splash/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/splash/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="images/splash/apple-touch-icon-57x57.png">
+    <link rel="icon" type="image/png" href="images/splash/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="images/splash/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="images/splash/favicon-16x16.png" sizes="16x16">
+    <link rel="shortcut icon" href="images/splash/favicon.ico" type="image/x-icon" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:900' rel='stylesheet' type='text/css'>
+    
+    <title>Hookipa</title>
+    
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="styles/framework.css" rel="stylesheet" type="text/css">
+    <link href="styles/font-awesome.css" rel="stylesheet" type="text/css">
+    
+    <!-- Login/ionic scripts -->
+    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyBOV1HSFxqzLjlF7ueo1JFAfY_ZDaiXWFM",
+            authDomain: "hookipafirebase.firebaseapp.com",
+            databaseURL: "https://hookipafirebase.firebaseio.com",
+            storageBucket: "hookipafirebase.appspot.com",
+          };
+          firebase.initializeApp(config);
+          
+          
+    </script>
+  
+        <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/angularfire/dist/angularfire.min.js"></script>
+       
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    
+    <!-- Auth0 Lock -->
+    <script src="lib/auth0-lock/build/auth0-lock.js"></script>
+    <!-- auth0-angular -->
+    <script src="lib/auth0-angular/build/auth0-angular.js"></script>
+    <!-- angular storage -->
+    <script src="lib/a0-angular-storage/dist/angular-storage.js"></script>
+    <!-- angular-jwt -->
+    <script src="lib/angular-jwt/dist/angular-jwt.js"></script>
+    
     <!-- your app's js -->
-<script src="js/app.js"></script>
-
-<script type="text/javascript" src="scripts/jquery.js"></script>
-<script type="text/javascript" src="scripts/plugins.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
+    <script src="js/app.js"></script>
+    
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/plugins.js"></script>
+    <script type="text/javascript" src="scripts/custom.js"></script>
 </head>
 
 <body ng-app="starter">
@@ -172,7 +180,7 @@
         
         <div class="content-strip">
             <div class="strip-content">
-                <h4>Login Page</h4>
+                <h4>Login Page </h4>
                 <p>Login into Hookipa to use it {{100+8}}</p>
                 <i class="fa fa-code"></i>
             </div>
@@ -198,13 +206,29 @@
                 <a href="#" class="login-button button button-small button-green button-fullscreen full-bottom">Login</a>
                 <div class="decoration"></div>
                 <div class="clear"></div>
-                <span ng-click="hari.fbLogin()"><a href="#" class="facebook-login facebook-color"><i class="fa fa-facebook"></i>Login with Facebook</a></span>
+                <script type="in/Login"></script>
+                <a href="#" class="facebook-login facebook-color" ng-click="hari.fbLogin()"><i class="fa fa-facebook"></i>Login with Facebook</a>
                 <a href="#" class="twitter-login twitter-color"><i class="fa fa-twitter"></i>Signin with Twitter</a>
                 <a href="#" class="google-login google-color"><i class="fa fa-google-plus"></i>Register with Google</a>
+                             
             </div>
             <div class="decoration"></div>
         </div>
-        
+        <br>
+      <ion-pane ng-controller="LoginController">
+          <ion-content class="center">
+            <div class="row">
+              <div class="col">
+                  <div id="lock-container"></div>
+              </div>
+            <div>
+        </ion-content> 
+      </ion-pane>
+             
+      
+        <br><br><br><br><br><br><br><br>
+                
+      
                 
         <div class="footer">
             <div class="footer-content">

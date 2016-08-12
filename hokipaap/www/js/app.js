@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'firebase'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -20,43 +20,68 @@ angular.module('starter', ['ionic', 'firebase'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+    
   });
 })
 
-.controller('loginCtrl', function(){
+
+.config(function($stateProvider) {
+  $stateProvider
+  .state('index', {
+    url: '/',
+    templateUrl: 'templates/main.html'
+  })
+   .state('profile', {
+    url: '/profile',
+    templateUrl: 'templates/profile.html'
+  })
+  .state('notification', {
+    url: '/notification',
+    templateUrl: 'templates/notify.html'
+  })
+  .state('editprofile', {
+    url: '/editProfile',
+    templateUrl: 'templates/editprofile.html'
+  })
+  .state('calendar', {
+    url: '/calendar',
+    templateUrl: 'templates/calendar.html'
+  })
+  .state('location', {
+    url: '/location',
+    templateUrl: 'templates/location.html'
+  })
+  .state('messages', {
+    url: '/messages',
+    templateUrl: 'templates/msg.html'
+  })
+  .state('paymentOptions', {
+    url: '/payopt',
+    templateUrl: 'templates/payopt.html'
+  })
+  .state('settings', {
+    url: '/settings',
+    templateUrl: 'templates/settings.html'
+  })
+  .state('logout', {
+    url: '/logout',
+    templateUrl: 'templates/logout.html'
+  })
+  .state('about', {
+    url: '/about',
+    templateUrl: 'templates/about.html'
+  });
+ 
+})
+
+.controller('mainController', function(){
+  //fake data for developing
+   this.username="Haribol";
+   this.slogan="To feed is to love, GO Vegan";
+   this.following= 108;
+   this.followers= 254;
+   this.rate = 4.8;
+   this.active= true;
+   this.image= 'images/pictures/1.jpg';
   
-    var config = {
-        apiKey: "AIzaSyBOV1HSFxqzLjlF7ueo1JFAfY_ZDaiXWFM",
-        authDomain: "hookipafirebase.firebaseapp.com",
-        databaseURL: "https://hookipafirebase.firebaseio.com",
-        storageBucket: "hookipafirebase.appspot.com",
-      };
-    firebase.initializeApp(config);
-  
-  var provider = new firebase.auth.FacebookAuthProvider();
-  this.fbLogin = function(){
-    console.log('aqui chegou');
-    firebase.auth().signInWithRedirect(provider);
-    
-    firebase.auth().getRedirectResult().then(function(result) {
-      if (result.credential) {
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        var token = result.credential.accessToken;
-        // ...
-      }
-      // The signed-in user info.
-      var user = result.user;
-    }).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
-    
-  };
-  
-});
+})

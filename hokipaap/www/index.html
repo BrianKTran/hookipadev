@@ -1,32 +1,38 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
-
+<!DOCTYPE HTML>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="icon" type="image/png" href="images/splash/android-chrome-192x192.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="196x196" href="images/splash/apple-touch-icon-196x196.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/splash/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/splash/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/splash/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/splash/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/splash/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/splash/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/splash/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/splash/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="images/splash/apple-touch-icon-57x57.png">
+    <link rel="icon" type="image/png" href="images/splash/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="images/splash/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="images/splash/favicon-16x16.png" sizes="16x16">
+    <link rel="shortcut icon" href="images/splash/favicon.ico" type="image/x-icon" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:900,800,700' rel='stylesheet' type='text/css'>
+        
+    <title>Hookipa</title>
+    
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyBOV1HSFxqzLjlF7ueo1JFAfY_ZDaiXWFM",
-        authDomain: "hookipafirebase.firebaseapp.com",
-        databaseURL: "https://hookipafirebase.firebaseio.com",
-        storageBucket: "hookipafirebase.appspot.com",
-      };
-      firebase.initializeApp(config);
-      
-      
-    </script>
     
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="styles/framework.css" rel="stylesheet" type="text/css">
+    <link href="styles/font-awesome.css" rel="stylesheet" type="text/css">
 
-    <!-- ionic/angularjs js -->
+  <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <script src="lib/firebase/firebase.js"></script>
@@ -37,14 +43,107 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
-  </head>
-  <body ng-app="starter">
+    
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/plugins.js"></script>
+    <script type="text/javascript" src="scripts/custom.js"></script>
+</head>
 
-    <ion-pane ng-controller="loginCtrl as hari">
+<body ng-app="starter">
+
+<div class="gallery-fix"></div>         <!-- Fix Gallery next/prev error on Android -->
+<div class="sidebar-tap-close"></div>   <!-- Overlay for content to close Sidebar -->
+
+<div class="header-fixed">
+    <a href="#" class="header-icon-1 open-left-sidebar"><i class="fa fa-navicon"></i></a>
+    <a href="index.html" class="header-logo">{{100+8}}</a>
+    
+</div>
+<div class="sidebar-left">
+    <div class="sidebar-scroll">
+        <div class="sidebar-header left-sidebar-header">
+            <img class="img-circle border-effect" ng-src='{{hari.image}}' alt="">   
+            <i class="sideName">{{hari.username}}</i>
+            <div class="ft">
+                <a class="menu-item " href="#/profile"><!-- active-item -->
+                    <i class="fa fa-user"></i>
+                    Profile
+                    
+                    <i class="fa fa-circle"></i>
+                </a>         
+                <a class="menu-item" href="#/notify"><!-- active-item -->
+                    <i class="fa fa-home"></i>
+                    Notifications
+                    <i class="fa fa-circle"></i>
+                </a>    
+                <a class="menu-item" href="#/editProfile"><!-- active-item -->
+                    <i class="fa fa-edit"></i>
+                   Edit Profile
+                    <i class="fa fa-circle"></i>
+                </a>
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+        
+        <div class="sidebar-menu">
+            
+            
+            <div class="sidebar-divider">
+                
+            </div>
+            <a class="menu-item active-item " href="#/"><!-- active-item -->
+                <i class="fa fa-rss"></i>
+                Activity Feed
+                <i class="fa fa-circle"></i>
+            </a>           
+            <a class="menu-item" href="#/calendar"><!-- active-item -->
+                <i class="fa fa-calendar"></i>
+                Calendar
+                <i class="fa fa-circle"></i>
+            </a>            
+            <a class="menu-item" href="#/location.html"><!-- active-item -->
+                <i class="fa fa-map-marker"></i>
+                Location
+                <i class="fa fa-circle"></i>
+            </a>             
+            <a class="menu-item" href="#/messages"><!-- active-item -->
+                <i class="fa fa-envelope"></i>
+                Messages
+                <i class="fa fa-circle"></i>
+            </a>                                                    
+                                         
+            <a class="menu-item" href="#/payopt">
+                <i class="fa fa-usd"></i>
+                Payment Options
+                <i class="fa fa-circle"></i>
+            </a>    
+                      
+            <a class="menu-item" href="#/settings">
+                <i class="fa fa-cog"></i>
+                Settings
+                <i class="fa fa-circle"></i>
+            </a>   
+            <a class="menu-item" href="#/logout">
+                <i class="fa fa-arrow-right"></i>
+                Log Out
+                <i class="fa fa-circle"></i>
+            </a> 
+            <div class="sidebar-divider">
+                
+            </div>
+            <a class="menu-item" href="#/about">
+                <i class="fa fa-info"></i>
+                About
+                <i class="fa fa-circle"></i>
+            </a>    
+        </div>    
+    </div>
+</div>
       
-      <ion-content>
-        <button class="button button-royal icon ion-social-facebook" ng-click="hari.fbLogin()"></button>
-      </ion-content>
-    </ion-pane>
-  </body>
-</html>
+
+
+<ion-pane id="page-content" class="view" ng-controller="mainController as hari">
+   <ion-nav-view></ion-nav-view>
+</ion-pane>
+</body>
