@@ -130,12 +130,12 @@ angular.module('starter', ['ionic', 'firebase'])
        }
 
 
-   
+   this.profile = true;
    this.slogan="To feed is to love, GO Vegan";
    this.following= 108;
    this.followers= 254;
    this.rate = 4.8;
-   this.active= true;
+   this.active= true; // should be set to true if the user is in online mode.
    this.profission="Profissional Chef";
    this.phone="+1 98575108";
    this.address="521 King Street, Melbourne Australia";
@@ -145,7 +145,17 @@ angular.module('starter', ['ionic', 'firebase'])
   this.resultado = $stateParams.result;
   
   
-
+  // function to logOut the user
+ 
+  this.logOut = function(){
+    firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+      console.log('deslogado');
+      }, function(error) {
+        // An error happened.
+        console.log('Erro: ' + error);
+      });
+    };
  
 
 })

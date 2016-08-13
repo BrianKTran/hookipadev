@@ -52,7 +52,7 @@
 
 </head>
 
-<body ng-app="starter">
+<body ng-app="starter" ng-controller="mainController as hari">
 
 <div class="gallery-fix"></div>         <!-- Fix Gallery next/prev error on Android -->
 <div class="sidebar-tap-close"></div>   <!-- Overlay for content to close Sidebar -->
@@ -69,9 +69,9 @@
             <img class="img-circle border-effect" ng-src='{{hari.image}}' alt="">   
             <i class="sideName">{{hari.username}}</i>
             <div class="ft">
-                <a class="menu-item " href="#/profile"><!-- active-item -->
+                <a class="menu-item" href="#/profile"><!-- active-item -->
                     <i class="fa fa-user"></i>
-                    Profile
+                    Profile 
                     
                     <i class="fa fa-circle"></i>
                 </a>         
@@ -128,7 +128,7 @@
                 Settings
                 <i class="fa fa-circle"></i>
             </a>   
-            <a class="menu-item" href="#/logout">
+            <a class="menu-item" href="#/login" ng-click="hari.logOut()">
                 <i class="fa fa-arrow-right"></i>
                 Log Out
                 <i class="fa fa-circle"></i>
@@ -147,7 +147,7 @@
       
 
 
-<ion-pane id="page-content" class="view" ng-controller="mainController as hari">
+<ion-pane id="page-content" class="view" >
    <ion-nav-view></ion-nav-view>
 </ion-pane>
 </body>
