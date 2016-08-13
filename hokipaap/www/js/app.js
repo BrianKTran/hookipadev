@@ -26,6 +26,7 @@ angular.module('starter', ['ionic', 'firebase'])
 
 
 .config(function($stateProvider, $urlRouterProvider) {
+  
   $stateProvider
   .state('login', {
     url: '/login',
@@ -84,66 +85,90 @@ angular.module('starter', ['ionic', 'firebase'])
 
 
 
-.controller('mainController', function($state, $stateParams){
+.controller('mainController', function($state, $stateParams, $firebaseAuth){
   /*
   //hide menu on views enter
   $scope.$on('$ionicView.enter', function() {
     // code to run each time view is entered
   }); */
   
-  console.log($stateParams.result);
-  //fake data for developing
+  var hari = this;
   
-   this.username="Haribol";
+  var config = {
+        apiKey: "AIzaSyBOV1HSFxqzLjlF7ueo1JFAfY_ZDaiXWFM",
+        authDomain: "hookipafirebase.firebaseapp.com",
+        databaseURL: "https://hookipafirebase.firebaseio.com",
+        storageBucket: "hookipafirebase.appspot.com",
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database(); 
+  
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      var uid= user.uid
+      hari.username= user.displayName;
+      hari.email= user.email;
+      hari.image= user.photoURL;
+      console.log(user); // if user is sign in
+      
+      
+      // verify if user is already in the database
+      // if user in the database do nothing, otherwise register his uid
+    } else {
+      // No user is signed in.
+      console.log('Sorry darling, no user is signed in (logged). Try to log In');
+      // rather to send user to login page :* 
+      
+    }
+  });
+    
+     this.writeUserData= function(userId, name, age) {
+        firebase.database().ref('users/' + userId).set({
+          username: name,
+          age: age
+        });
+       }
+
+
+   
    this.slogan="To feed is to love, GO Vegan";
    this.following= 108;
    this.followers= 254;
    this.rate = 4.8;
    this.active= true;
-   this.image= 'images/pictures/1.jpg';
    this.profission="Profissional Chef";
    this.phone="+1 98575108";
-   this.email="myEmail@provider.com";
    this.address="521 King Street, Melbourne Australia";
    this.about=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere convallis urna id mollis. Maecenas justo tellus, tristique vel dignissim non";
    
+   //finish of fake data for development
   this.resultado = $stateParams.result;
+  
+  
+
  
 
 })
 
 
-.controller('loginCtrl', ['$scope', '$state', '$timeout', function($scope, $state, $timeout){
+.controller('loginCtrl', ['$scope', '$state', '$timeout','$firebaseAuth', function($scope, $state, $timeout, $firebaseAuth){
   //firebase initialization and under that fbauth native firebase sdk
-    var config = {
-        apiKey: "AIzaSyBOV1HSFxqzLjlF7ueo1JFAfY_ZDaiXWFM",
-        authDomain: "hookipafirebase.firebaseapp.com",
-        databaseURL: "https://hookipafirebase.firebaseio.com",
-        storageBucket: "hookipafirebase.appspot.com",
-      };
-    firebase.initializeApp(config);
-    var database = firebase.database();  
-     this.writeUserData= function(userId, name, age) {
-      console.log('ué...'); 
-      firebase.database().ref('users/' + userId).set({
-        username: name,
-        age: age
-      });
-    }
+ 
+   
     
-   var uid=  'ede6Ee3qmxbDeTfNfbDOCwn1ow82' ;
+   
   
     var provider = new firebase.auth.FacebookAuthProvider();
     // fbLogin function 
     this.fbLogin = function(){
-      console.log('aqui chegou');
+     
       firebase.auth().signInWithRedirect(provider);
       
       firebase.auth().getRedirectResult().then(function(result) {
       if (result.credential) {
           // This gives you a Facebook Access Token. You can use it to access the Facebook API.
           var token = result.credential.accessToken;
-          console.log(token);
+          console.log(result);
           // ...
         }
         
