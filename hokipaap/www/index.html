@@ -34,6 +34,8 @@
 
     <script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script>
    
+   
+    <script type="text/javascript" src="scripts/jquery.js"></script>
   <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
@@ -46,7 +48,7 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
     
-    <script type="text/javascript" src="scripts/jquery.js"></script>
+   
     <script type="text/javascript" src="scripts/plugins.js"></script>
     <script type="text/javascript" src="scripts/custom.js"></script> 
 
@@ -57,7 +59,7 @@
 <div class="gallery-fix"></div>         <!-- Fix Gallery next/prev error on Android -->
 <div class="sidebar-tap-close"></div>   <!-- Overlay for content to close Sidebar -->
 
-<div class="header-fixed" >
+<div class="header-fixed" ng-if="hari.loggedIn" >
     <a href="#" id="abrefecha" class="header-icon-1 open-left-sidebar"><i class="fa fa-navicon"></i></a>
     <a href="index.html" class="header-logo">{{100+8}}</a>
     

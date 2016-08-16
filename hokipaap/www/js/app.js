@@ -85,7 +85,7 @@ angular.module('starter', ['ionic', 'firebase'])
 
 
 
-.controller('mainController', function($state, $stateParams, $firebaseAuth){
+.controller('mainController', function($window, $state, $stateParams, $firebaseAuth){
   /*
   //hide menu on views enter
   $scope.$on('$ionicView.enter', function() {
@@ -93,6 +93,7 @@ angular.module('starter', ['ionic', 'firebase'])
   }); */
   
   var hari = this;
+  hari.loggedIn = false;
   
   var config = {
         apiKey: "AIzaSyBOV1HSFxqzLjlF7ueo1JFAfY_ZDaiXWFM",
@@ -110,7 +111,19 @@ angular.module('starter', ['ionic', 'firebase'])
       hari.email= user.email;
       hari.image= user.photoURL;
       console.log(user); // if user is sign in
+      hari.loggedIn = true;
       
+      var userId = firebase.auth().currentUser.uid;
+      firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+        var username = snapshot.val().username;
+        if(username){
+           console.log(username);
+        }else{
+          console.log('user not in database');
+        }
+       
+        // ...
+      });
       
       // verify if user is already in the database
       // if user in the database do nothing, otherwise register his uid
@@ -118,7 +131,7 @@ angular.module('starter', ['ionic', 'firebase'])
       // No user is signed in.
       console.log('Sorry darling, no user is signed in (logged). Try to log In');
       // rather to send user to login page :* 
-      
+      $state.go('login')
     }
   });
     
@@ -150,6 +163,7 @@ angular.module('starter', ['ionic', 'firebase'])
   this.logOut = function(){
     firebase.auth().signOut().then(function() {
     // Sign-out successful.
+      
       console.log('deslogado');
       }, function(error) {
         // An error happened.
