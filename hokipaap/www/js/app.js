@@ -22,6 +22,15 @@ angular.module('starter', ['ionic', 'firebase'])
     }
     
   });
+  
+    var config = {
+        apiKey: "AIzaSyBOV1HSFxqzLjlF7ueo1JFAfY_ZDaiXWFM",
+        authDomain: "hookipafirebase.firebaseapp.com",
+        databaseURL: "https://hookipafirebase.firebaseio.com",
+        storageBucket: "hookipafirebase.appspot.com",
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database(); 
 })
 
 
@@ -31,8 +40,6 @@ angular.module('starter', ['ionic', 'firebase'])
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
-    controller: 'loginCtrl',
-    controllerAs: 'hari'
   })
   .state('index', {
     url: '/',
@@ -95,39 +102,41 @@ angular.module('starter', ['ionic', 'firebase'])
   var hari = this;
   hari.loggedIn = false;
   
-  var config = {
-        apiKey: "AIzaSyBOV1HSFxqzLjlF7ueo1JFAfY_ZDaiXWFM",
-        authDomain: "hookipafirebase.firebaseapp.com",
-        databaseURL: "https://hookipafirebase.firebaseio.com",
-        storageBucket: "hookipafirebase.appspot.com",
-  };
-  firebase.initializeApp(config);
-  var database = firebase.database(); 
-  
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      hari.loggedIn = true;
+      hari.loggedIn = true; // no code can came before this statement
       $state.go('index');
-      var uid= user.uid
+      var uid= user.uid;
       hari.username= user.displayName;
       hari.email= user.email;
       hari.image= user.photoURL;
       console.log(user); // if user is sign in
       
-      
-      
       var userId = firebase.auth().currentUser.uid;
       firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-        var username = snapshot.val().username;
-        if(username){
-           console.log(username);
-        }else{
-          console.log('user not in database');
+        if(snapshot=== "hare Krsna" ){
+          var username = snapshot.val().username;
+          if(snapshot.val().username){ // is user exists on databas
+             console.log(username); 
+          }else{
+            console.log('user not in database'); 
+            // if user not in database lets save him there
+             firebase.database().ref('users/' + userId).set({
+                username: hari.username,
+                ocupation: "",
+                phone: "",
+                email: hari.email,
+                address: "",
+                picture: hari.image,
+                rate: "not rated yet",
+                menu: ""
+                
+              });
+              console.log("user sent to database");
+              }
         }
-       
         // ...
       });
-      
       // verify if user is already in the database
       // if user in the database do nothing, otherwise register his uid
     } else {
@@ -138,13 +147,7 @@ angular.module('starter', ['ionic', 'firebase'])
     }
   });
     
-     this.writeUserData= function(userId, name, age) {
-        firebase.database().ref('users/' + userId).set({
-          username: name,
-          age: age
-        });
-       }
-
+     
 
    this.profile = true;
    this.slogan="To feed is to love, GO Vegan";
@@ -177,14 +180,11 @@ angular.module('starter', ['ionic', 'firebase'])
 
 })
 
-
+/*
 .controller('loginCtrl', ['$scope', '$state', '$timeout','$firebaseAuth', function($scope, $state, $timeout, $firebaseAuth){
   //firebase initialization and under that fbauth native firebase sdk
  
-   
     
-   
-  
     var provider = new firebase.auth.FacebookAuthProvider();
     // fbLogin function 
     this.fbLogin = function(){
@@ -205,7 +205,7 @@ angular.module('starter', ['ionic', 'firebase'])
     /*    $timeout(function() { // angular is cute and weird at same time, timout is needed to $state.go to properly work
           $state.go('index', {result: result});
         }); */
-      }).catch(function(error) {
+ /*     }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -220,9 +220,5 @@ angular.module('starter', ['ionic', 'firebase'])
     
     
   
-}])
+}])*/ // debug issues 
 
-.controller('profileCtrl', function(){
-  
- 
-})
