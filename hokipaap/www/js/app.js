@@ -106,12 +106,15 @@ angular.module('starter', ['ionic', 'firebase'])
   
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
+      hari.loggedIn = true;
+      $state.go('index');
       var uid= user.uid
       hari.username= user.displayName;
       hari.email= user.email;
       hari.image= user.photoURL;
       console.log(user); // if user is sign in
-      hari.loggedIn = true;
+      
+      
       
       var userId = firebase.auth().currentUser.uid;
       firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
