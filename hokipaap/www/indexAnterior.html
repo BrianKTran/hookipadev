@@ -7,6 +7,9 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="styles/framework.css" rel="stylesheet" type="text/css">
+    <link href="styles/font-awesome.css" rel="stylesheet" type="text/css">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -40,11 +43,56 @@
   </head>
   <body ng-app="starter">
 
-    <ion-pane ng-controller="loginCtrl as hari">
-      
-      <ion-content>
-        <button class="button button-royal icon ion-social-facebook" ng-click="hari.fbLogin()"></button>
-      </ion-content>
-    </ion-pane>
+      <ion-side-menus >
+        <ion-side-menu-content  >
+            <ion-nav-bar class="bar-dark nav-title-slide-ios7">
+              <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+            </ion-nav-bar>
+            <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+          </ion-side-menu-content>
+        
+          <ion-side-menu side="left">
+            <header class="bar bar-in bar-header bar-dark">
+              <img class="img-circle border-effect padding" ng-src="{{hari.image}}" alt="">
+            </header>
+            <ion-content class="has-header-menu">
+              <ion-list>
+                <ion-item menu-close ng-click="login()">
+                  Profile
+                </ion-item>
+                <ion-item menu-close href="#/app/search">
+                  Notifications
+                </ion-item>
+                <ion-item menu-close href="#/app/browse">
+                  Edit Profile
+                </ion-item>
+                <ion-item menu-close href="#/app/playlists">
+                  Activity Feed
+                </ion-item>
+                <ion-item menu-close href="#/app/playlists">
+                  Calendar
+                </ion-item>
+                <ion-item menu-close href="#/app/playlists">
+                  Location
+                </ion-item>
+                <ion-item menu-close href="#/app/playlists">
+                  Messages
+                </ion-item>
+                <ion-item menu-close href="#/app/playlists">
+                  Payment Options
+                </ion-item>
+                  <ion-item menu-close href="#/app/playlists">
+                  Settings
+                </ion-item>
+                <ion-item menu-close href="#/app/playlists">
+                  About
+                </ion-item>
+                <ion-item menu-close href="#/app/playlists">
+                  Logout
+                </ion-item>
+              </ion-list>
+            </ion-content>
+          </ion-side-menu>
+        </ion-side-menus>  
   </body>
 </html>
