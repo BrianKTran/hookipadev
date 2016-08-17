@@ -107,10 +107,12 @@ angular.module('starter', ['ionic', 'firebase'])
       hari.loggedIn = true; // no code can came before this statement
       $state.go('index');
       var uid= user.uid;
+      var uid= user.uid
       hari.username= user.displayName;
       hari.email= user.email;
       hari.image= user.photoURL;
       console.log(user); // if user is sign in
+
       
       var userId = firebase.auth().currentUser.uid;
       firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
@@ -143,7 +145,9 @@ angular.module('starter', ['ionic', 'firebase'])
       // No user is signed in.
       console.log('Sorry darling, no user is signed in (logged). Try to log In');
       // rather to send user to login page :* 
-      $state.go('login')
+      $timeout(function() { // angular is cute and weird at same time, timout is needed to $state.go to properly work
+            $state.go('login');
+      });
     }
   });
     
@@ -162,6 +166,44 @@ angular.module('starter', ['ionic', 'firebase'])
    
    //finish of fake data for development
   this.resultado = $stateParams.result;
+  
+  
+  
+// function to Login the user 
+  // facebook auth
+  var provider = new firebase.auth.FacebookAuthProvider();
+    // fbLogin function 
+  this.fbLogin = function(){
+      console.log('aqui chegou');
+     
+      firebase.auth().signInWithRedirect(provider);
+      
+      firebase.auth().getRedirectResult().then(function(result) {
+      if (result.credential) {
+          // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+          var token = result.credential.accessToken;
+          console.log(result);
+          // ...
+        }
+        
+        // The signed-in user info.
+        var user = result.user;
+        console.log(user);
+          $timeout(function() { // angular is cute and weird at same time, timout is needed to $state.go to properly work
+            $state.go('index', {result: result});
+          }); 
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
+      
+  };  // finish facebook auth 
   
   
   // function to logOut the user
