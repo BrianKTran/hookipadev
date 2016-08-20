@@ -1,0 +1,46 @@
+<body ng-app="starter">
+
+<div class="gallery-fix"></div>         <!-- Fix Gallery next/prev error on Android -->
+<div class="sidebar-tap-close"></div>   <!-- Overlay for content to close Sidebar -->
+
+<div id="page-content">
+    <div id="page-content-scroll"><!--Enables this element to be scrolled -->
+        <div class="header-clear"></div>
+        
+        <div class="content-strip">
+            <div class="strip-content">
+                <h4>Login Page </h4>
+                <p>Login into Hookipa to use it</p>
+                <i class="fa fa-code"></i>
+            </div>
+            <div class="overlay"></div>
+            <img class="preload-image" data-original="images/pictures/3.jpg" alt="img">
+        </div>
+        
+        <div class="content" ng-controller="loginCtrl as hari">    
+            <div class="decoration"></div>
+            <div class="page-login full-bottom">
+                <a href="#" class="page-login-logo"></a>
+                
+                <div class="decoration"></div>
+                <div class="clear"></div>
+                <script type="in/Login"></script>
+                <a href="#" class="facebook-login facebook-color" ng-click="hari.fbLogin()"><i class="fa fa-facebook"></i>Login with Facebook</a>
+                <a href="#" class="twitter-login twitter-color"><i class="fa fa-twitter"></i>Signin with Twitter</a>
+                <a href="#" class="google-login google-color"><i class="fa fa-google-plus"></i>Register with Google</a>
+                             
+            </div>
+            <div class="decoration"></div>
+        </div>
+        <br>
+      <ion-pane ng-controller="LoginController">
+          <ion-content class="center">
+            <div class="row">
+              <div class="col">
+                  <div id="lock-container"></div>
+              </div>
+            </div>
+        </ion-content> 
+      </ion-pane>
+    </div>   
+</div>

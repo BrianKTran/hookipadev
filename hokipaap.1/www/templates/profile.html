@@ -1,0 +1,147 @@
+
+<div class="gallery-fix"></div>         <!-- Fix Gallery next/prev error on Android -->
+<div class="sidebar-tap-close"></div>   <!-- Overlay for content to close Sidebar -->
+
+<div id="page-content">
+    <div id="page-content-scroll"><!--Enables this element to be scrolled -->
+        <div class="header-clear"></div>
+        
+    <div class="content-fullscreen">
+       <div class="page-profile">
+            <div class="page-profile-header">
+                 <a href="../images/pictures/5.jpg" class="show-gallery" title="Profile Image!"><img data-original="../images/pictures/5t.jpg" class="preload-image" alt="img"></a>
+                <h3>{{hari.username}}</h3>
+                <em>{{hari.slogan}}</em>
+                <div class="overlay bg-black"></div>
+                <div class="follow-buttons">
+                    
+					<a href="#"><i class="fa fa-rss fa-2x"></i>  Follow </a>
+					<a href="#"><i class="fa fa-comment fa-2x"></i> Message</a>
+                    
+                </div>
+           </div>
+        </div>
+    </div>
+	
+	<div class="col-sm-4">
+						
+					</div>
+    <div class="content">
+            <div class="page-profile">
+                <div class="page-profile-followers">
+                    <a href="#">
+                       <i class="fa fa-heart fa-2x"></i>
+						
+                        {{hari.following}} Following
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-rss fa-2x"></i>
+                        {{hari.followers}} Followers
+                    </a>
+                  
+				
+					<a>
+					
+					<i class="fa fa-star"></i>
+						{{hari.rate}}	Rating	
+                       </a>
+                 
+
+
+					</div>
+				<div ng-if="hari.active" class="page-profile-followers">
+				  <a alt="pic" class="img-position active-item"><i class="fa fa-circle fa-2x"></i> <p><strong>Online </strong></p></a> 
+				</div>
+				<div ng-if="!hari.active" class="page-profile-followers">
+				  <a alt="pic" class="img-position "><i class="fa fa-circle fa-2x"></i> <p><strong>Online </strong></p></a> 
+				</div>
+
+                <div class="decoration"></div>
+
+                <div class="container no-bottom">
+                    <div class="sidebar-left-small">
+                        <h4 class="no-bottom">Basic Info</h4>
+                        
+                        <ul class="font-icon-list">
+						<li><a href="#"><i class="fa fa-briefcase"></i>{{hari.profission}}</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>{{hari.phone}}</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i>{{hari.email}}</a></li>
+                            <li><a href="#"><i class="fa fa-dollar"></i>See Menu</a></li>
+                            <li><a href="#"><i class="fa fa-clock-o"></i>Make Reservation</a></li>
+                            <li><a href="#"><i class="fa fa-location-arrow"></i>{{hari.address}}</a></li>
+                        </ul>
+                        <br>
+                    </div>
+                    <div class="decoration hide-if-responsive"></div> 
+					
+					<p><strong>****Activity / Menu goes here****</strong></p>
+					
+					<div class="decoration hide-if-responsive"></div>
+                    <div class="sidebar-right-big">
+                        <h4>About {{hari.username}}</h4>
+                        <p>
+                           {{hari.about}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  
+        <div class="content">
+            <div class="decoration"></div>
+        </div>
+                
+        <div class="footer">
+            <div class="footer-content">
+                <h3 class="footer-logo">Hookipa profile</h3>
+                <p class="footer-text">
+                    We aim to simplify your life by creating a beautiful and simple product that's feature rich and easy to use!
+                </p>
+            </div>
+            <div class="footer-socials">
+                <a href="#" class="scale-hover facebook-color"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="scale-hover twitter-color"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="scale-hover google-color"><i class="fa fa-google-plus"></i></a>
+                <a href="#" class="scale-hover phone-color"><i class="fa fa-phone"></i></a>
+                <a href="#" class="scale-hover mail-color"><i class="fa fa-envelope-o"></i></a>
+                <a href="#" class="scale-hover bg-night-dark back-to-top"><i class="fa fa-angle-up"></i></a>
+                <div class="clear"></div>
+            </div>
+            <p class="footer-strip">Copyright <span id="copyright-year"></span> Enabled. All Rights Reserved</p>
+        </div>
+        
+   
+</div>
+    
+<div class="share-bottom">
+    <h3>Share Page</h3>
+    <div class="share-socials-bottom">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.themeforest.net/">
+            <i class="fa fa-facebook facebook-color"></i>
+            Facebook
+        </a>
+        <a href="https://twitter.com/home?status=Check%20out%20ThemeForest%20http://www.themeforest.net">
+            <i class="fa fa-twitter twitter-color"></i>
+            Twitter
+        </a>
+        <a href="https://plus.google.com/share?url=http://www.themeforest.net">
+            <i class="fa fa-google-plus google-color"></i>
+            Google
+        </a>
+
+        <a href="https://pinterest.com/pin/create/button/?url=http://www.themeforest.net/&media=https://0.s3.envato.com/files/63790821/profile-image.jpg&description=Themes%20and%20Templates">
+            <i class="fa fa-pinterest-p pinterest-color"></i>
+            Pinterest
+        </a>
+        <a href="sms:">
+            <i class="fa fa-comment-o sms-color"></i>
+            Text
+        </a>
+        <a href="mailto:?&subject=Check this page out!&body=http://www.themeforest.net">
+            <i class="fa fa-envelope-o mail-color"></i>
+            Email
+        </a>
+        <div class="clear"></div>
+    </div>
+</div>
