@@ -142,18 +142,24 @@ angular.module('starter', ['ionic', 'firebase'])
   });
  
    // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/hare/login');
+  $urlRouterProvider.otherwise('/hare/index');
 })
 
 
 
-.controller('mainController', function($window, $state, $stateParams, $firebaseAuth){
+.controller('mainController', function($window, $state, $timeout, $stateParams, $firebaseAuth){
+  
+  $timeout(function() {
+    $state.go('hare.index');
+  }, 0);
+  
+  
   /*
   //hide menu on views enter
   $scope.$on('$ionicView.enter', function() {
     // code to run each time view is entered
   }); */
-  
+  /*
   var hari = this;
   hari.loggedIn = false;
   
@@ -274,8 +280,8 @@ angular.module('starter', ['ionic', 'firebase'])
       });
     };
  
-
-})
+*/
+});
 
 /*
 .controller('loginCtrl', ['$scope', '$state', '$timeout','$firebaseAuth', function($scope, $state, $timeout, $firebaseAuth){
@@ -318,4 +324,3 @@ angular.module('starter', ['ionic', 'firebase'])
     
   
 }])*/ // debug issues 
-
