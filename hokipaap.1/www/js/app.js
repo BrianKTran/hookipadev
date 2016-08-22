@@ -23,7 +23,7 @@ angular.module('starter', ['ionic', 'firebase'])
     
   });
   
-    var config = {
+  var config = {
         apiKey: "AIzaSyBOV1HSFxqzLjlF7ueo1JFAfY_ZDaiXWFM",
         authDomain: "hookipafirebase.firebaseapp.com",
         databaseURL: "https://hookipafirebase.firebaseio.com",
@@ -40,8 +40,8 @@ angular.module('starter', ['ionic', 'firebase'])
   .state('hare', {
     url: '/hare',
     abstract: true,
-    templateUrl: 'templates/side-menu.html',
-    controller: 'mainController'
+    templateUrl: 'templates/side-menu.html'
+    
   })
   .state('hare.login', {
     url: '/login',
@@ -142,26 +142,18 @@ angular.module('starter', ['ionic', 'firebase'])
   });
  
    // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/hare/index');
+  $urlRouterProvider.otherwise('/hare/login');
 })
 
 
 
 .controller('mainController', function($window, $state, $timeout, $stateParams, $firebaseAuth){
+  console.log('Hare Krsna');
   
-  $timeout(function() {
-    $state.go('hare.index');
-  }, 0);
+ 
   
-  
-  /*
-  //hide menu on views enter
-  $scope.$on('$ionicView.enter', function() {
-    // code to run each time view is entered
-  }); */
-  /*
   var hari = this;
-  hari.loggedIn = false;
+  
   
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -174,7 +166,7 @@ angular.module('starter', ['ionic', 'firebase'])
       hari.image= user.photoURL;
       console.log(user); // if user is sign in
 
-      
+      /*
       var userId = firebase.auth().currentUser.uid;
       firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
         if(snapshot=== "hare Krsna" ){
@@ -196,10 +188,10 @@ angular.module('starter', ['ionic', 'firebase'])
                 
               });
               console.log("user sent to database");
-              }
-        }
-        // ...
-      });
+              } 
+        } 
+        // ... 
+      }); */
       // verify if user is already in the database
       // if user in the database do nothing, otherwise register his uid
     } else {
@@ -210,7 +202,7 @@ angular.module('starter', ['ionic', 'firebase'])
             $state.go('hare.login');
       });
     }
-  });
+  }); 
     
      
 
@@ -280,47 +272,5 @@ angular.module('starter', ['ionic', 'firebase'])
       });
     };
  
-*/
-});
 
-/*
-.controller('loginCtrl', ['$scope', '$state', '$timeout','$firebaseAuth', function($scope, $state, $timeout, $firebaseAuth){
-  //firebase initialization and under that fbauth native firebase sdk
- 
-    
-    var provider = new firebase.auth.FacebookAuthProvider();
-    // fbLogin function 
-    this.fbLogin = function(){
-     
-      firebase.auth().signInWithRedirect(provider);
-      
-      firebase.auth().getRedirectResult().then(function(result) {
-      if (result.credential) {
-          // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-          var token = result.credential.accessToken;
-          console.log(result);
-          // ...
-        }
-        
-        // The signed-in user info.
-        var user = result.user;
-        console.log(user);
-    /*    $timeout(function() { // angular is cute and weird at same time, timout is needed to $state.go to properly work
-          $state.go('index', {result: result});
-        }); */
- /*     }).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-      });
-      
-    };
-    
-    
-  
-}])*/ // debug issues 
+});

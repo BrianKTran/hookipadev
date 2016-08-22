@@ -1,0 +1,67 @@
+{
+  "name": "ng-cordova-oauth",
+  "version": "0.2.10",
+  "description": "Connect to Oauth providers using Apache Cordova and the InAppBrowser plugin",
+  "author": {
+    "name": "Nic Raboy",
+    "url": "http://www.nraboy.com"
+  },
+  "homepage": "https://www.thepolyglotdeveloper.com",
+  "devDependencies": {
+    "angular-mocks": "1.5.7",
+    "grunt": "1.0.1",
+    "grunt-contrib-clean": "1.0.0",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-jshint": "1.0.0",
+    "grunt-contrib-uglify": "1.0.1",
+    "grunt-karma": "2.0.0",
+    "jasmine-core": "2.4.1",
+    "jssha": "1.6.0",
+    "karma": "1.1.0",
+    "karma-coverage": "1.0.0",
+    "karma-jasmine": "1.0.2",
+    "karma-phantomjs-launcher": "1.0.1",
+    "phantomjs-prebuilt": "2.1.7"
+  },
+  "keywords": [
+    "angularjs",
+    "oauth",
+    "api",
+    "apache cordova",
+    "phonegap",
+    "ionic framework"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "angular": "1.5.7"
+  },
+  "gitHead": "5dd456fb24df1edbad1c21ba6d2e00d8b6908538",
+  "_id": "ng-cordova-oauth@0.2.10",
+  "_shasum": "6a2d7c209061b889712bff51c5b796535fea8339",
+  "_from": "ng-cordova-oauth@latest",
+  "_npmVersion": "3.10.6",
+  "_nodeVersion": "5.7.1",
+  "_npmUser": {
+    "name": "nraboy",
+    "email": "nic@nraboy.com"
+  },
+  "dist": {
+    "shasum": "6a2d7c209061b889712bff51c5b796535fea8339",
+    "tarball": "https://registry.npmjs.org/ng-cordova-oauth/-/ng-cordova-oauth-0.2.10.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "nraboy",
+      "email": "nic@nraboy.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/ng-cordova-oauth-0.2.10.tgz_1469020285401_0.9656493179500103"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/ng-cordova-oauth/-/ng-cordova-oauth-0.2.10.tgz"
+}

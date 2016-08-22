@@ -1,6 +1,7 @@
-/* Empty. Add your own CSS if you like */
-.has-header{
-    margin-top:10pt;
+/* css for side-menu */
+.bar-dark{
+    height: 40pt;
+    background-color: #1c1d1e !important;
 }
 
 .bar-in{
@@ -8,5 +9,59 @@
 }
 
 .has-header-menu{
-    margin-top: 100pt;
+    margin-top: 66pt;
+}
+
+.custom {
+  background-color: #1c1d1e !important; /* This sets the background color*/
+ }
+ 
+/*Set the background to transparent for ion-item*/
+.custom .item {
+  background-color: transparent;
+  border:none;   /*Removes all borders*/
+  font-size: 13px;
+  line-height: 40px;
+  padding-left: 10px;
+  font-weight: 400;
+  color: rgba(255,255,255,.7);
+  border-bottom: solid 1px rgba(0,0,0,.2);
+  border-top: solid 1px rgba(255,255,255,.05);
+  
+}
+ 
+.custom .item i{
+  padding-right: 7pt;
+} 
+
+.fa-circle {
+    opacity: .4;
+    font-size: 6px;
+    position: absolute;
+    right: 25px;
+    top: 23pt;
+}
+/*Changes the border for the last item*/
+.custom .item:last-child {
+  border-bottom: 1px solid #666;
+}
+ 
+.custom .item-complex .item-content, .dark .item-radio .item-content {
+  background-color: transparent;
+}
+
+.menuName{
+  position: absolute;
+  margin-top: 50pt;
+  margin-left: 7%;
+  color: rgba(255,255,255,.7);
+}
+
+/* finish of side-menu css*/
+
+
+/* put page content in right position */
+
+#page-content{
+  margin-top: -5pt;
 }

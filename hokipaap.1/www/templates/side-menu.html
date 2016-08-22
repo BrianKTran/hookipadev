@@ -1,7 +1,6 @@
  <ion-side-menus>
         <ion-side-menu-content>
             <ion-nav-bar class="bar-dark nav-title-slide-ios7">
-              <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
               <ion-nav-buttons side="left">
                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
                </button>
@@ -13,41 +12,64 @@
         <ion-side-menu side="left">
            <ion-header-bar class="bar bar-in bar-header bar-dark">
              <img class="img-circle border-effect padding" ng-src="{{hari.image}}" alt="">
+             <p class="menuName">{{hari.username}}</p>
            </ion-header-bar>
-           <ion-content class="has-header-menu">
-             <ion-list>
-               <ion-item menu-close="" href="#/hare/profile">
-                <i class="ion-android-person"></i> Profile <i class="fa fa-circle"></i>
+           <ion-content class="has-header-menu custom">
+             <ion-list >
+               <ion-item menu-close="" href="#/hare/profile" class="syam">
+                 <i class="fa fa-user"></i>
+                    Profile 
+                 <i class="fa fa-circle"></i>
                </ion-item>
                <ion-item menu-close="" href="#/hare/notification">
-                 <i class=""></i> Notifications
+                   <i class="fa fa-home"></i>
+                     Notifications
+                   <i class="fa fa-circle"></i>
                </ion-item>
                <ion-item menu-close="" href="#/hare/editProfile">
-                <i class="ion-compose"></i> Edit Profile
+                  <i class="fa fa-edit"></i>
+                    Edit Profile
+                   <i class="fa fa-circle"></i>
                </ion-item>
                <ion-item menu-close="" href="#/hare/">
-                <i class=""></i> Activity Feed
+                   <i class="fa fa-rss"></i>
+                    Activity Feed
+                   <i class="fa fa-circle"></i>
                </ion-item>
                <ion-item menu-close="" href="#/hare/calendar">
-                <i class=""></i> Calendar <i class="fa fa-calendar"></i>
+                   <i class="fa fa-calendar"></i>
+                    Calendar
+                   <i class="fa fa-circle"></i>
                </ion-item>
                <ion-item menu-close="" href="#/hare/location">
-                <i class=""></i> Location
+                    <i class="fa fa-map-marker"></i>
+                     Location
+                    <i class="fa fa-circle"></i>
                </ion-item>
                <ion-item menu-close="" href="#/hare/messages">
-                <i class=""></i> Messages
+                    <i class="fa fa-envelope"></i>
+                    Messages
+                    <i class="fa fa-circle"></i>
                </ion-item>
                <ion-item menu-close="" href="#/hare/payopt">
-                <i class=""></i> Payment Options
+                    <i class="fa fa-usd"></i>
+                    Payment Options
+                    <i class="fa fa-circle"></i>
                </ion-item>
                <ion-item menu-close="" href="#/hare/settings">
-                <i class=""></i> Settings
+                    <i class="fa fa-cog"></i>
+                    Settings
+                    <i class="fa fa-circle"></i>
                </ion-item>
                <ion-item menu-close="" href="#/hare/about">
-                <i class=""></i> About
+                     <i class="fa fa-info"></i>
+                     About
+                     <i class="fa fa-circle"></i>
                </ion-item>
                <ion-item menu-close="" href="#/hare/logout">
-                <i class=""></i> Logout
+                     <i class="fa fa-arrow-right"></i>
+                      Log Out
+                     <i class="fa fa-circle"></i>
                </ion-item>
              </ion-list>
            </ion-content>
