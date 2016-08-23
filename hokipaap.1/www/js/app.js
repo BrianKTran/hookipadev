@@ -150,10 +150,7 @@ angular.module('starter', ['ionic', 'firebase'])
 .controller('mainController', function($window, $state, $timeout, $stateParams, $firebaseAuth){
   console.log('Hare Krsna');
   
- 
-  
-  var hari = this;
-  
+ var hari = this;
   
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -166,14 +163,10 @@ angular.module('starter', ['ionic', 'firebase'])
       hari.image= user.photoURL;
       console.log(user); // if user is sign in
 
-      /*
+      
       var userId = firebase.auth().currentUser.uid;
       firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-        if(snapshot=== "hare Krsna" ){
-          var username = snapshot.val().username;
-          if(snapshot.val().username){ // is user exists on databas
-             console.log(username); 
-          }else{
+        if(snapshot.val() === null){
             console.log('user not in database'); 
             // if user not in database lets save him there
              firebase.database().ref('users/' + userId).set({
@@ -188,10 +181,15 @@ angular.module('starter', ['ionic', 'firebase'])
                 
               });
               console.log("user sent to database");
-              } 
+               
+        }else{
+           var username = snapshot.val().username;
+            if(snapshot.val().username){ // user exists on database
+             console.log(username); 
+            }
         } 
         // ... 
-      }); */
+      }); 
       // verify if user is already in the database
       // if user in the database do nothing, otherwise register his uid
     } else {
@@ -205,7 +203,7 @@ angular.module('starter', ['ionic', 'firebase'])
   }); 
     
      
-
+// fake data for development
    this.profile = true;
    this.slogan="To feed is to love, GO Vegan";
    this.following= 108;
@@ -218,9 +216,7 @@ angular.module('starter', ['ionic', 'firebase'])
    this.about=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere convallis urna id mollis. Maecenas justo tellus, tristique vel dignissim non";
    
    //finish of fake data for development
-  this.resultado = $stateParams.result;
-  
-  
+
   
 // function to Login the user 
   // facebook auth
@@ -260,7 +256,6 @@ angular.module('starter', ['ionic', 'firebase'])
   
   
   // function to logOut the user
- 
   this.logOut = function(){
     firebase.auth().signOut().then(function() {
     // Sign-out successful.
