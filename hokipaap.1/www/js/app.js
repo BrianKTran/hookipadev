@@ -33,7 +33,6 @@ angular.module('starter', ['ionic', 'firebase'])
   var database = firebase.database(); 
 })
 
-
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
   
@@ -146,14 +145,13 @@ angular.module('starter', ['ionic', 'firebase'])
 })
 
 
-
 .controller('mainController', function($window, $state, $timeout, $stateParams, $firebaseAuth){
   console.log('Hare Krsna');
   
  var hari = this;
-  
+  //the following verify if user is logged 
   firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
+    if (user) { // all actions must be inserted inside this if statment, or if in diferent controller, a similar must be there, once we required user to be logged for use the app.
       hari.loggedIn = true; // no code can came before this statement
       $state.go('hare.index');
       var uid= user.uid;
@@ -163,7 +161,7 @@ angular.module('starter', ['ionic', 'firebase'])
       hari.image= user.photoURL;
       console.log(user); // if user is sign in
 
-      
+      // the follow is verifing if user already in database, and if it is not, it'll create him there
       var userId = firebase.auth().currentUser.uid;
       firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
         if(snapshot.val() === null){
@@ -177,27 +175,35 @@ angular.module('starter', ['ionic', 'firebase'])
                 address: "",
                 picture: hari.image,
                 rate: "not rated yet",
-                menu: ""
+                menu: "",
+                online: false   // this will make user able to set on/off mode (realtimedatabase!)
                 
               });
               console.log("user sent to database");
-               
-        }else{
+            // also send user id to 'followers' and 'following' object
+            firebase.database().ref('followers/' + userId).set({
+                userid: true
+            });
+            firebase.database().ref('following/' + userId).set({
+                userid: true
+            });
+        }else{ 
            var username = snapshot.val().username;
             if(snapshot.val().username){ // user exists on database
              console.log(username); 
             }
         } 
         // ... 
-      }); 
-      // verify if user is already in the database
-      // if user in the database do nothing, otherwise register his uid
+      }); // end of function to verify and create user at realtime database
+      // the following is making similar
+   
+   // following code is for no logged users
     } else {
       // No user is signed in.
       console.log('Sorry darling, no user is signed in (logged). Try to log In');
       // rather to send user to login page :* 
       $timeout(function() { // angular is cute and weird at same time, timout is needed to $state.go to properly work
-            $state.go('hare.login');
+            $state.go('hare.login'); 
       });
     }
   }); 
@@ -259,8 +265,7 @@ angular.module('starter', ['ionic', 'firebase'])
   this.logOut = function(){
     firebase.auth().signOut().then(function() {
     // Sign-out successful.
-      
-      console.log('deslogado');
+       console.log('deslogado');
       }, function(error) {
         // An error happened.
         console.log('Erro: ' + error);

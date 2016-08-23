@@ -63,5 +63,13 @@
 /* put page content in right position */
 
 #page-content{
-  margin-top: -5pt;
+  margin-top: -10pt;
+}
+
+/* login page */
+.pageapp-login{
+  margin-left: -100pt;
+  margin-top: 70pt;
+  width: 100%;
+  height: 100%
 }
