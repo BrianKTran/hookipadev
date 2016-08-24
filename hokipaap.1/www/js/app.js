@@ -192,11 +192,25 @@ angular.module('starter', ['ionic', 'firebase'])
             if(snapshot.val().username){ // user exists on database
              console.log(username); 
             }
+            hari.rate = snapshot.val().rate;
+            hari.phone = snapshot.val().phone;
+            hari.active = snapshot.val().online;
+            hari.address = snapshot.val().address;
+            hari.profission = snapshot.val().ocupation;
         } 
         // ... 
       }); // end of function to verify and create user at realtime database
-      // the following is making similar
-   
+      // the following is taking the users followers from database
+      firebase.database().ref('/followers/' + userId).once('value').then(function(snapshot) {
+           var fol = snapshot.val(); 
+           hari.followers = Object.keys(fol).length; // atribute to $scope.followers the number of followers in database  
+      });  
+      // the following takes who user follows (following object)
+       firebase.database().ref('/following/' + userId).once('value').then(function(snapshot) {
+           var fol = snapshot.val(); 
+           hari.following = Object.keys(fol).length; // atribute to $scope.folling the number users it follows in database  
+      }); 
+      
    // following code is for no logged users
     } else {
       // No user is signed in.
@@ -208,22 +222,13 @@ angular.module('starter', ['ionic', 'firebase'])
     }
   }); 
     
-     
 // fake data for development
    this.profile = true;
    this.slogan="To feed is to love, GO Vegan";
-   this.following= 108;
-   this.followers= 254;
-   this.rate = 4.8;
-   this.active= true; // should be set to true if the user is in online mode.
-   this.profission="Profissional Chef";
-   this.phone="+1 98575108";
-   this.address="521 King Street, Melbourne Australia";
    this.about=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere convallis urna id mollis. Maecenas justo tellus, tristique vel dignissim non";
    
-   //finish of fake data for development
+//finish of fake data for development
 
-  
 // function to Login the user 
   // facebook auth
   var provider = new firebase.auth.FacebookAuthProvider();
