@@ -155,9 +155,6 @@ angular.module('starter', ['ionic', 'firebase'])
       hari.loggedIn = true; // no code can came before this statement
       $state.go('hare.index');
       var uid= user.uid;
-      hari.username= user.displayName;
-      hari.email= user.email;
-      hari.image= user.photoURL;
       console.log(user); // if user is sign in
 
       // the follow is verifing if user already in database, and if it is not, it'll create him there
@@ -197,6 +194,8 @@ angular.module('starter', ['ionic', 'firebase'])
             hari.address = snapshot.val().address;
             hari.profission = snapshot.val().ocupation;
             hari.picture = snapshot.val().picture;
+            hari.username= snapshot.val().username;
+            hari.email= snapshot.val().email;
         } 
         // ... 
       }); // end of function to verify and create user at realtime database
@@ -218,7 +217,6 @@ angular.module('starter', ['ionic', 'firebase'])
       hari.newAddress = hari.address;
       hari.newOcupation = hari.ocupation;
       hari.newPic = hari.image;
-     
       
       hari.editProfile = function() {
           // each line'll update individual item, otherwise if updating all, other itens will be deleted.
@@ -232,11 +230,6 @@ angular.module('starter', ['ionic', 'firebase'])
           
           return firebase.database().ref().update(updates); // code for updating 
       };
-      
-      console.log(hari.rate);
-      
-      
-      
    // following code is for no logged users
     } else {
       // No user is signed in.
