@@ -155,7 +155,6 @@ angular.module('starter', ['ionic', 'firebase'])
       hari.loggedIn = true; // no code can came before this statement
       $state.go('hare.index');
       var uid= user.uid;
-      var uid= user.uid
       hari.username= user.displayName;
       hari.email= user.email;
       hari.image= user.photoURL;
@@ -197,6 +196,7 @@ angular.module('starter', ['ionic', 'firebase'])
             hari.active = snapshot.val().online;
             hari.address = snapshot.val().address;
             hari.profission = snapshot.val().ocupation;
+            hari.picture = snapshot.val().picture;
         } 
         // ... 
       }); // end of function to verify and create user at realtime database
@@ -210,6 +210,32 @@ angular.module('starter', ['ionic', 'firebase'])
            var fol = snapshot.val(); 
            hari.following = Object.keys(fol).length; // atribute to $scope.folling the number users it follows in database  
       }); 
+      
+      // code for edit profile data
+      hari.newName = hari.username;
+      hari.newPhone = hari.phone;
+      hari.newEmail = hari.email;
+      hari.newAddress = hari.address;
+      hari.newOcupation = hari.ocupation;
+      hari.newPic = hari.image;
+     
+      
+      hari.editProfile = function() {
+          // each line'll update individual item, otherwise if updating all, other itens will be deleted.
+          var updates = {};
+          updates['/users/' + uid + '/username'] = hari.newName; // path and data to update
+          updates['/users/' + uid + '/phone'] = hari.newPhone;
+          updates['/users/' + uid + '/email'] = hari.newEmail;
+          updates['/users/' + uid + '/address'] = hari.newAddress;  
+          updates['/users/' + uid + '/ocupation'] = hari.newOcupation;
+          updates['/users/' + uid + '/picture'] = hari.newPic; 
+          
+          return firebase.database().ref().update(updates); // code for updating 
+      };
+      
+      console.log(hari.rate);
+      
+      
       
    // following code is for no logged users
     } else {
