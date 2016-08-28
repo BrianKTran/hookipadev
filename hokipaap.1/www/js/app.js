@@ -211,13 +211,14 @@ angular.module('starter', ['ionic', 'firebase'])
       }); 
       
       // code for edit profile data
+      /*
       hari.newName = hari.username;
       hari.newPhone = hari.phone;
       hari.newEmail = hari.email;
       hari.newAddress = hari.address;
       hari.newOcupation = hari.ocupation;
       hari.newPic = hari.image;
-      
+      */
       hari.editProfile = function() {
           // each line'll update individual item, otherwise if updating all, other itens will be deleted.
           var updates = {};

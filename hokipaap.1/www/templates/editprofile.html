@@ -21,19 +21,20 @@
             <div class="profile-content full-bottom">
                 <div class="container no-bottom">
                     <div class="sidebar-left-small">
-                        <h3 class="no-bottom">{{hari.username}}<input ng-if="editName" type=text placeholder="your full name" ng-model="hari.newName" ><span><i class="fa fa-edit " ng-click="editName = true"></i></span></h3> 
-                        <p class="half-bottom">{{hari.ocupation}} <input ng-if="editOcup" type=text placeholder="your profission" ng-model="hari.newOcupation"><span class=" bg-light show-share-bottom"><i class="fa fa-edit " ng-click="editOcup = true" ></i></span></p>
-                        <ul class="font-icon-list no-bottom">
-                            <li><a href="#"><i class="fa fa-phone"></i>{{hari.phone}}</a><input ng-if="editPhone" type=text placeholder="your phone number" ng-model="hari.newPhone"><span class=" bg-light show-share-bottom"><i class="fa fa-edit " ng-click="editPhone = true"></i></span></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i>{{hari.email}}</a><input ng-if="editEmail" type=text placeholder="yourEmail@email.com"ng-model="hari.newEmail"><span class=" bg-light show-share-bottom"><i class="fa fa-edit " ng-click="editEmail = true"></i></span></li>
-                            <li><a href="#"><i class="fa fa-location-arrow"></i>{{hari.address}}</a><input ng-if="editAdress" type=text placeholder="your Adress" ng-model="hari.newAddress"><span class=" bg-light show-share-bottom"><i class="fa fa-edit " ng-click="editAdress = true"></i></span></li>
-                        </ul>
-                        <br>
+                        <form name="editProfForm" novalidate>
+                            <h3 class="no-bottom">{{hari.username}}<i class="fa fa-edit padding" ng-click="editName = true"></i><input ng-if="editName" type=text placeholder="your full name" ng-model="hari.newName" required><span></span></h3> 
+                            <p class="half-bottom">{{hari.profission}}<i class="fa fa-edit padding" ng-click="editOcup = true" ></i> <input ng-if="editOcup" type=text placeholder="your profission" ng-model="hari.newOcupation" required><span class=" bg-light show-share-bottom"></span></p>
+                            <ul class="font-icon-list no-bottom">
+                                <li><a href=""><i class="fa fa-phone"></i>{{hari.phone}} <i class="fa fa-edit padding" ng-click="editPhone = true"></i></a><input ng-if="editPhone" type=text placeholder="your phone number" ng-model="hari.newPhone" required><span class=" bg-light show-share-bottom"></span></li>
+                                <li><a href=""><i class="fa fa-envelope"></i>{{hari.email}}<i class="fa fa-edit padding" ng-click="editEmail = true"></i></a><input ng-if="editEmail" type=text placeholder="yourEmail@email.com"ng-model="hari.newEmail" required><span class=" bg-light show-share-bottom"></span></li>
+                                <li><a href=""><i class="fa fa-location-arrow"></i>{{hari.address}}<i class="fa fa-edit padding" ng-click="editAdress = true"></i></a><input ng-if="editAdress" type=text placeholder="your Adress" ng-model="hari.newAddress" required><span class=" bg-light show-share-bottom"></span></li>
+                            </ul>
+                        </form>
                     </div>
                 </div>
             </div>  
             <div class="decoration"></div>
-            <button class="button button-energized" ng-click="hari.editProfile()">Save</button>
+            <button class="button button-energized" ng-click="editProfForm.$valid && hari.editProfile()">Save</button>
         </div>
         
         
