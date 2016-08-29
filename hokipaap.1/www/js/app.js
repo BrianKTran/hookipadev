@@ -145,7 +145,7 @@ angular.module('starter', ['ionic', 'firebase'])
 })
 
 
-.controller('mainController', function($window, $state, $timeout, $stateParams, $firebaseAuth){
+.controller('mainController', function($scope, $window, $state, $timeout, $stateParams, $firebaseAuth){
   console.log('Hare Krsna');
   
  var hari = this;
@@ -222,13 +222,29 @@ angular.module('starter', ['ionic', 'firebase'])
       hari.editProfile = function() {
           // each line'll update individual item, otherwise if updating all, other itens will be deleted.
           var updates = {};
-          updates['/users/' + uid + '/username'] = hari.newName; // path and data to update
-          updates['/users/' + uid + '/phone'] = hari.newPhone;
-          updates['/users/' + uid + '/email'] = hari.newEmail;
-          updates['/users/' + uid + '/address'] = hari.newAddress;  
-          updates['/users/' + uid + '/ocupation'] = hari.newOcupation;
-          updates['/users/' + uid + '/picture'] = hari.newPic; 
-          
+          if(hari.newName){
+             updates['/users/' + uid + '/username'] = hari.newName; // path and data to update
+             $scope.editName = false;
+          }
+          if(hari.newPhone){
+             updates['/users/' + uid + '/phone'] = hari.newPhone;
+             $scope.editPhone = false;
+          } 
+          if(hari.newEmail){
+            updates['/users/' + uid + '/email'] = hari.newEmail;
+            $scope.editEmail = false;
+          }
+          if(hari.newAddress){
+            updates['/users/' + uid + '/address'] = hari.newAddress; 
+            $scope.editAdress = false;
+          }
+          if(hari.newOcupation){
+            updates['/users/' + uid + '/ocupation'] = hari.newOcupation;
+          }
+          if(hari.newPic){
+            updates['/users/' + uid + '/picture'] = hari.newPic; 
+            $scope.editPic = false;
+          }
           return firebase.database().ref().update(updates); // code for updating 
       };
    // following code is for no logged users
@@ -243,10 +259,36 @@ angular.module('starter', ['ionic', 'firebase'])
   }); 
     
 // fake data for development
-   this.profile = true;
    this.slogan="To feed is to love, GO Vegan";
    this.about=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere convallis urna id mollis. Maecenas justo tellus, tristique vel dignissim non";
    
+   //fake menu data
+   this.menu = [
+      {
+       name : 'bolo prassad',
+       picture: 'picture',
+       description: 'this is a nice cake that has been offered to Supreme Lord Sri Krsna. It is only for his mercy that is and ouservls exists',
+       recipe: 'make a very nice ekadasi cake and then offer to our supreme Lord <3 Hari! Hari se vara Hari ka naam',
+       price: 108,
+       show: true,
+       comments: [],
+       likes: 0,
+       shares: 0
+       
+     },
+      {
+       name : 'bolo prassad2',
+       picture: 'picture',
+       description: 'this is a nice cake that has been offered to Supreme Lord Sri Krsna. It is only for his mercy that is and ouservls exists',
+       recipe: 'make a very nice ekadasi cake and then offer to our supreme Lord <3 Hari! Hari se vara Hari ka naam',
+       price: 108,
+       show: true,
+       comments: [{ uid:'tal'}, {uid2:'tal'}],
+       likes: 0,
+       shares: 0
+       
+      }
+   ];
 //finish of fake data for development
 
 // function to Login the user 

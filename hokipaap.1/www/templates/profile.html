@@ -1,7 +1,6 @@
 <div id="page-content">
     <div id="page-content-scroll"><!--Enables this element to be scrolled -->
         <div class="header-clear"></div>
-        
     <div class="content-fullscreen">
        <div class="page-profile">
             <div class="page-profile-header">
@@ -10,18 +9,13 @@
                 <em>{{hari.slogan}}</em>
                 <div class="overlay bg-black"></div>
                 <div class="follow-buttons">
-                    
 					<a href="#"><i class="fa fa-rss fa-2x"></i>  Follow </a>
 					<a href="#"><i class="fa fa-comment fa-2x"></i> Message</a>
-                    
                 </div>
            </div>
         </div>
     </div>
-	
-	<div class="col-sm-4">
-						
-					</div>
+	<div class="col-sm-4">					</div>
     <div class="content">
             <div class="page-profile">
                 <div class="page-profile-followers">
@@ -34,16 +28,10 @@
                         <i class="fa fa-rss fa-2x"></i>
                         {{hari.followers}} Followers
                     </a>
-                  
-				
 					<a>
-					
-					<i class="fa fa-star"></i>
-						{{hari.rate}}	Rating	
-                       </a>
-                 
-
-
+    					<i class="fa fa-star"></i>
+    						{{hari.rate}}	Rating	
+                    </a>
 					</div>
 				<div ng-if="hari.active" class="page-profile-followers">
 				  <a alt="pic" class="img-position active-item"><i class="fa fa-circle fa-2x"></i> <p><strong>Online </strong></p></a> 
@@ -69,9 +57,29 @@
                         <br>
                     </div>
                     <div class="decoration hide-if-responsive"></div> 
-					
-					<p><strong>****Activity / Menu goes here****</strong></p>
-					
+                    <div class="actMenu" ng-repeat="radhe in hari.menu">
+                        <div class="item item-toggle">
+                            <p><strong>{{radhe.name}}</strong></p>
+                             <label class="toggle toggle-assertive">
+                                 <input type="checkbox">
+                                 <div class="track">
+                                     <div class="handle"></div>
+                                  </div>
+                             </label>
+                            <img ng-src="radhe.picture">
+                            <p><strong>Description: </strong>{{radhe.description}}</p>
+                            <strong>price: </strong>{{radhe.price | currency}}
+                            <p><strong>Recipe: </strong>{{radhe.recipe}}</p>
+                            <button>Add to Order</button>
+                            <button>Remove from Order</button>
+                            <p>Quantity + - []</p>
+                            <span>{{radhe.likes}} likes</span>
+                            <span>{{radhe.comments.length}} comments</span> 
+                            <p>
+                                <span><i class="fa fa-thumbs-up"></i> Like </span><span> Comment </span><span><i class="fa fa-share-alt"></i> Share </span>
+                            </p>
+                        </div>
+                    </div>
 					<div class="decoration hide-if-responsive"></div>
                     <div class="sidebar-right-big">
                         <h4>About {{hari.username}}</h4>

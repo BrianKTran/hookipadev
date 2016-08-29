@@ -73,3 +73,13 @@
   width: 100%;
   height: 100%
 }
+
+/*edit profile page*/
+.toast{
+  padding: 10pt;
+  margin-bottom: 5pt;
+  width: 200pt;
+  text-align: center;
+  color: #2E8B57;
+  background-color: rgba(144,238,144, 0.5);
+}

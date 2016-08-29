@@ -34,7 +34,8 @@
                 </div>
             </div>  
             <div class="decoration"></div>
-            <button class="button button-energized" ng-click="editProfForm.$valid && hari.editProfile()">Save</button>
+            <div ng-if="toast" class="toast">Profile updated with sucssess</div>
+            <button class="button button-energized" ng-click="editProfForm.$valid && hari.editProfile(); toast=true">Save</button>
         </div>
         
         
