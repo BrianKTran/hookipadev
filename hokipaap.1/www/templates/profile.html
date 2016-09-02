@@ -57,29 +57,47 @@
                         <br>
                     </div>
                     <div class="decoration hide-if-responsive"></div> 
-                    <div class="actMenu" ng-repeat="radhe in hari.menu">
-                        <div class="item item-toggle">
-                            <p><strong>{{radhe.name}}</strong></p>
-                             <label class="toggle toggle-assertive">
-                                 <input type="checkbox">
-                                 <div class="track">
-                                     <div class="handle"></div>
-                                  </div>
-                             </label>
-                            <img ng-src="radhe.picture">
-                            <p><strong>Description: </strong>{{radhe.description}}</p>
-                            <strong>price: </strong>{{radhe.price | currency}}
-                            <p><strong>Recipe: </strong>{{radhe.recipe}}</p>
-                            <button>Add to Order</button>
-                            <button>Remove from Order</button>
-                            <p>Quantity + - []</p>
-                            <span>{{radhe.likes}} likes</span>
-                            <span>{{radhe.comments.length}} comments</span> 
-                            <p>
-                                <span><i class="fa fa-thumbs-up"></i> Like </span><span> Comment </span><span><i class="fa fa-share-alt"></i> Share </span>
-                            </p>
+                    <div class="actmenu">
+                        <div class="button-bar">
+                          <a class="button" ng-click="menu=false">Activity</a>
+                          <a class="button"ng-click="menu=true">Menu</a>
                         </div>
+                       
+                         <div class="actmenumenu" ng-repeat="radhe in hari.menu" ng-if="menu">
+                            
+                            <div class="item item-toggle">
+                                 <p class="menuTitle"><strong>{{radhe.name}}</strong></p>
+                                 <label class="toggle toggle-assertive">
+                                     <input type="checkbox">
+                                     <div class="track">
+                                         <div class="handle"></div>
+                                      </div>
+                                 </label>
+                                <img class="menuImg" ng-src="radhe.picture">
+                                <p class="menuDesc"><strong>Description: </strong><br>{{radhe.description}}</p>
+                                <p class="menuPrice"><strong>Price: </strong>{{radhe.price | currency}}</p>
+                                <ion-toggle ng-model="airplaneMode" toggle-class="toggle-calm" class="menuRecipe"><p><strong>Recipe: </strong><br>{{radhe.recipe}}</p></ion-toggle>
+                                <button class="button button-small button-balanced botaoTO">Add to Order</button>
+                                <button class="button button-small button-assertive botaoTO">Remove from Order</button>
+                                <h4>
+                                    <a class="add-qty" ng-click="radhe.add()"><i class="fa fa-plus"></i></a>
+                                    <span ng-init="radhe.quantity = 0" class="qtin">{{radhe.quantity}}</span>
+                                    <a ng-click="quantity = quantity - 1" class="substract-qty"><i class="fa fa-minus"></i></a>
+                                </h4>
+                                <div class="likeshare">
+                                    <span class="menulike">{{radhe.likes}} likes</span>
+                                    <span class="menushare">{{radhe.comments.length}} comments</span> 
+                                </div>
+                                <p class="menudoLCS">
+                                    <span><i class="fa fa-thumbs-up"></i> Like </span><span> Comment </span><span><i class="fa fa-share-alt"></i> Share </span>
+                                </p>
+                            </div>
+                           
+                        </div>
+                        <div class="actactmenu" ng-if="!menu"><h3>SOME ACTIVITY HERE</h3></div>
+                        
                     </div>
+                   
 					<div class="decoration hide-if-responsive"></div>
                     <div class="sidebar-right-big">
                         <h4>About {{hari.username}}</h4>

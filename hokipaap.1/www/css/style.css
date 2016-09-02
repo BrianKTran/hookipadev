@@ -83,3 +83,83 @@
   color: #2E8B57;
   background-color: rgba(144,238,144, 0.5);
 }
+
+/* menu in profile page*/   
+.actmenu{
+  background-color: #0dc8a9;
+  padding-left: 10pt;
+  padding-top:5pt;
+  margin-top: -15pt;
+  margin-left: -15pt;
+}
+.actmenumenu{
+  padding-right: 11pt;
+  padding-bottom: 10pt;
+}
+.actactmenu{
+  padding-right: 10pt;
+  padding-bottom: 10pt;
+}
+.menuTitle{
+  text-align: center;
+}
+.menuImg{
+  width: 80pt;
+  height: 80pt;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+}
+.menuDesc{
+   margin-left: 90pt;
+   margin-top: -78pt;
+   width: 140pt;
+   height: auto;
+}
+.menuPrice{
+  position: relative;
+  margin-left: 90pt;
+}
+.menuRecipe{
+  margin-top: 10pt;
+  margin-left: 90pt;
+  width: 140pt;
+}
+.botaoTO{
+  margin-top: 15pt;
+  right: -30pt;
+}
+.menuQnt{
+ position: absolute;
+}
+.add-qty{
+  position: absolute;
+  margin-top: -80pt;
+}
+.substract-qty{
+  position: absolute;
+  margin-top: -80pt;
+  margin-left: 60pt;
+}
+.qtin{
+ position: absolute;  
+ margin-left: 30pt;
+ margin-top: -85pt;
+}
+.likeshare{
+position: absolute;
+left: 100pt;
+top: 250pt;
+}
+.menudoLCS{
+  margin-top: 30pt;
+  width: 100%;
+  left: 30pt;
+}
+.menudoLCS span{
+  padding: 10pt 10pt 10pt 5pt;
+  background-color: rgba(0,0,0,0.1)
+}
+/* maps standart*/
+#map {
+    height: 100%;
+    width: 100%;
+}

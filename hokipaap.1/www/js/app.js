@@ -103,8 +103,10 @@ angular.module('starter', ['ionic', 'firebase'])
     url: '/messages',
     views: {
       'menuContent': {
-        templateUrl: 'templates/msg.html'
-      }
+        templateUrl: 'templates/msg.html',
+        controller: 'chatController',
+        controllerAs: 'hari'
+      },
     }
   })
   .state('hare.paymentOptions', {
@@ -338,6 +340,58 @@ angular.module('starter', ['ionic', 'firebase'])
         console.log('Erro: ' + error);
       });
     };
- 
+  this.quantity = 0;  
+  this.add = function(){
+    this.quantity++;
+  };
+  this.minus = function(){
+    this.quantity--;
+  };
+})
 
+.controller('chatController', function($scope){
+  // fake mensages data
+  this.messages=[
+      {
+        talkid: '1',
+        participants: {
+          id1: 'id1',
+          id2: 'id2'
+        },
+        mensages:{
+          mensageid: {
+            name: 'ananda',
+            photourl: 'image.jpg',
+            text: 'haribol!'
+            
+          },
+          mensageid2:{
+            name:'krsna priya',
+            photourl: 'image.jpg',
+            text: 'haribol, nanda, td bem?'
+          }
+        }
+      },
+      {
+        talkid: '2',
+        participants:{
+          id1: 'id1',
+          id2: 'id3'
+        },
+        mensages: {
+        mensageid: {
+            name: 'ananda',
+            photourl: 'image.jpg',
+            text: 'haribol!'
+            
+          },
+          mensageid2:{
+            name:'krsna priya',
+            photourl: 'image.jpg',
+            text: 'haribol, nanda, td bem?'
+          }
+       }
+     }
+    ];
+  
 });

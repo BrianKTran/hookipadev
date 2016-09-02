@@ -2359,6 +2359,8 @@ ul.tabs li.active-tab{
 }
 
 .speach-left{
+    margin-left: 50pt;
+    margin-top: -30pt;
 	float:left;
 	display:inline;
 	text-align:left;
@@ -2371,12 +2373,14 @@ ul.tabs li.active-tab{
 }
 
 .speach-left-title{
+    float: left;
 	display:block;
 	width:100%;
 	font-size:10px;
 	font-style:normal;
 	padding-left:5px;
-	color:#000000;	
+	margin-top: -25pt;
+	color: rgba(0,0,0,0.4);	
 	text-shadow:0px 1px 0px #FFFFFF;
 }
 
@@ -2387,6 +2391,8 @@ ul.tabs li.active-tab{
 	max-width:75%;
 	font-size:13px;
     padding:5px 10px;
+    margin-right: 10pt;
+    margin-top: -2pt;
 	border-radius:10px;
 	background-color:#FFFFFF;	
 	border:solid 1px #cacaca;
@@ -2394,11 +2400,13 @@ ul.tabs li.active-tab{
 
 .speach-right-title{
 	text-align:right;
+	float: right;
 	display:block;
 	font-size:10px;
 	font-style:normal;
-	padding-right:5px;
-	color:#000000;	
+	margin-right: -130pt;
+	margin-top: 30pt;
+	color: rgba(0,0,0,0.4);	
 	text-shadow:0px 1px 0px #FFFFFF;
 }
 
