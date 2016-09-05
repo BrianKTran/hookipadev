@@ -109,6 +109,16 @@ angular.module('starter', ['ionic', 'firebase'])
       },
     }
   })
+  .state('hare.chats', {
+    url: '/chats',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/msg.html',
+        controller: 'chatController',
+        controllerAs: 'hari'
+      },
+    }
+  })
   .state('hare.paymentOptions', {
     url: '/payopt',
     views: {
@@ -249,6 +259,9 @@ angular.module('starter', ['ionic', 'firebase'])
           }
           return firebase.database().ref().update(updates); // code for updating 
       };
+      // code for chat
+
+      
    // following code is for no logged users
     } else {
       // No user is signed in.
@@ -349,49 +362,46 @@ angular.module('starter', ['ionic', 'firebase'])
   };
 })
 
-.controller('chatController', function($scope){
-  // fake mensages data
-  this.messages=[
-      {
-        talkid: '1',
-        participants: {
-          id1: 'id1',
-          id2: 'id2'
-        },
-        mensages:{
-          mensageid: {
-            name: 'ananda',
-            photourl: 'image.jpg',
-            text: 'haribol!'
-            
-          },
-          mensageid2:{
-            name:'krsna priya',
-            photourl: 'image.jpg',
-            text: 'haribol, nanda, td bem?'
-          }
-        }
-      },
-      {
-        talkid: '2',
-        participants:{
-          id1: 'id1',
-          id2: 'id3'
-        },
-        mensages: {
-        mensageid: {
-            name: 'ananda',
-            photourl: 'image.jpg',
-            text: 'haribol!'
-            
-          },
-          mensageid2:{
-            name:'krsna priya',
-            photourl: 'image.jpg',
-            text: 'haribol, nanda, td bem?'
-          }
-       }
-     }
-    ];
+.controller('chatController', function($scope, $timeout){
+  //write msg data to database
+  var hari = this;
+  var messages = [];
+      var userId = firebase.auth().currentUser.uid;
+      var uname = firebase.auth().currentUser.displayName;
+      var pic = firebase.auth().currentUser.photoURL;
+      this.send = function() {
+        firebase.database().ref('messages/' ).push({
+          text: this.text,
+          sender: userId,
+          name: uname,
+          photoURL: pic
+        });
+        this.text= "";
+      };
+  // add a listener to menssages add so they can be displayed
   
+  var msgRef = firebase.database().ref('messages/' );
+  msgRef.on('child_added', function(data) {
+    if(messages){
+       messages.push(data.val());
+    } else{
+      messages = data.val();
+    }
+    console.log(messages);
+    $timeout(function(){
+      hari.messages = messages;
+    });
+    
+    
+  }); 
+ /*
+  firebase.database().ref('/messages').once('value').then(function(snapshot) {
+         var fol = snapshot.val(); 
+         hari.messages= fol;
+         console.log(hari.messages);
+  });    */
+  
+
+  
+
 });

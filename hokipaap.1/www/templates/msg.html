@@ -1,27 +1,28 @@
 <div id="page-content">
     <div id="page-content-scroll"><!--Enables this element to be scrolled -->
-        <div class="content">    
+        <div class="content" ng-repeat="radhe in hari.messages">    
             <div class="header-clear"></div>
             <div class="header-clear"></div>
-            <div class="chat-page no-bottom" ng-repeat=" radhe in hari.messages[1].mensages" >
-                <section ng-if="radhe.name=='ananda'">
-                    <img class="img-small-circle" src="images/pictures/0.jpg">
+            <div class="chat-page no-bottom" >
+                <section >
+                    <img class="img-small-circle" ng-src="{{radhe.photoURL}}">
                     <p class="speach-left">{{radhe.text}}</p> 
                     <em class="speach-left-title">{{radhe.name}}</em>
                 </section>
                 <div class="clear"></div>
-                <section ng-if="radhe.name=='krsna priya'">
-                    <img class="img-small-circle" style="float: right; margin-top: -10pt;" src="images/pictures/0.jpg">
-                    <p class="speach-right bg-blue-dark">{{radhe.text}}</p>
+                <section >
+                    <img class="img-small-circle" style="float: right; margin-top: -1pt;" src="images/pictures/0.jpg">
+                    <p class="speach-right bg-blue-dark">{{hari.messages.text}}</p>
                     <em class="speach-right-title">{{radhe.name}}</em>
                 </section>
                 <div class="clear"></div>          
             </div>  
-        </div>  
+        </div> 
+        <div style="margin-bottom: 50pt;"></div>
         <div class="chat-input">
             <a class="scale-hover" href="#"><i class="fa fa-camera"></i></a>
-            <input type="text" placeholder="Enter your message here...">
-            <a class="scale-hover" href="#">Send</a>
+            <input type="text" placeholder="Enter your message here..." ng-model="hari.text">
+            <a class="scale-hover" ng-click="hari.send()">Send</a>
         </div>  
     </div>
 </div>

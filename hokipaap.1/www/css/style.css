@@ -11,6 +11,10 @@
 .has-header-menu{
     margin-top: 66pt;
 }
+.has-header{
+  margin-top: 30pt;
+  padding-top: 10pt;
+}
 
 .custom {
   background-color: #1c1d1e !important; /* This sets the background color*/
@@ -157,6 +161,13 @@ top: 250pt;
 .menudoLCS span{
   padding: 10pt 10pt 10pt 5pt;
   background-color: rgba(0,0,0,0.1)
+}
+
+/* display conversations */
+.chatmsg{
+  position: absolute;
+  margin-left: 50pt;
+  margin-top: -25pt;
 }
 /* maps standart*/
 #map {
