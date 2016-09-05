@@ -4,15 +4,15 @@
             <div class="header-clear"></div>
             <div class="header-clear"></div>
             <div class="chat-page no-bottom" >
-                <section >
+                <section ng-if="radhe.sender != hari.userId">
                     <img class="img-small-circle" ng-src="{{radhe.photoURL}}">
                     <p class="speach-left">{{radhe.text}}</p> 
                     <em class="speach-left-title">{{radhe.name}}</em>
                 </section>
                 <div class="clear"></div>
-                <section >
-                    <img class="img-small-circle" style="float: right; margin-top: -1pt;" src="images/pictures/0.jpg">
-                    <p class="speach-right bg-blue-dark">{{hari.messages.text}}</p>
+                <section ng-if="radhe.sender == hari.userId">
+                    <img class="img-small-circle" style="float: right; margin-top: -1pt;" src="{{radhe.photoURL}}">
+                    <p class="speach-right bg-blue-dark">{{radhe.text}}</p>
                     <em class="speach-right-title">{{radhe.name}}</em>
                 </section>
                 <div class="clear"></div>          

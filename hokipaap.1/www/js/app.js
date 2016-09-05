@@ -366,18 +366,18 @@ angular.module('starter', ['ionic', 'firebase'])
   //write msg data to database
   var hari = this;
   var messages = [];
-      var userId = firebase.auth().currentUser.uid;
-      var uname = firebase.auth().currentUser.displayName;
-      var pic = firebase.auth().currentUser.photoURL;
-      this.send = function() {
-        firebase.database().ref('messages/' ).push({
-          text: this.text,
-          sender: userId,
-          name: uname,
-          photoURL: pic
-        });
-        this.text= "";
-      };
+  var userId = firebase.auth().currentUser.uid; hari.userId = userId;
+  var uname = firebase.auth().currentUser.displayName;
+  var pic = firebase.auth().currentUser.photoURL;
+  this.send = function() {
+      firebase.database().ref('messages/' ).push({
+        text: this.text,
+        sender: userId,
+        name: uname,
+        photoURL: pic
+      });
+      this.text= "";
+  };
   // add a listener to menssages add so they can be displayed
   
   var msgRef = firebase.database().ref('messages/' );
