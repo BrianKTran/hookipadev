@@ -113,7 +113,7 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives'])
     url: '/chats',
     views: {
       'menuContent': {
-        templateUrl: 'templates/msg.html',
+        templateUrl: 'templates/chats.html',
         controller: 'chatController',
         controllerAs: 'hari'
       },
@@ -366,20 +366,36 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives'])
   //write msg data to database
   var hari = this;
   var messages = [];
+  var talks = [];
   var userId = firebase.auth().currentUser.uid; hari.userId = userId;
   var uname = firebase.auth().currentUser.displayName;
   var pic = firebase.auth().currentUser.photoURL;
+ 
+  var talkKey = firebase.database().ref().child('messages').push().key;
   this.send = function() {
-      firebase.database().ref('messages/' ).push({
+      firebase.database().ref('messages/' + talkKey ).push({
         text: this.text,
         sender: userId,
         name: uname,
         photoURL: pic
       });
+      firebase.database().ref('users/' + userId + '/talks/').push(talkKey);
       this.text= "";
   };
-  // add a listener to menssages add so they can be displayed
   
+  //add a listener to chats
+  firebase.database().ref('users/'+ userId + '/talks/').on('child_added', function(data) {
+    if(talks){
+       talks.push(data.val());
+    } else{
+      talks = data.val();
+    }
+    console.log(talks);
+    $timeout(function(){
+      hari.talks = talks;
+    });
+  });
+  // add a listener to menssages add so they can be displayed
   var msgRef = firebase.database().ref('messages/' );
   msgRef.on('child_added', function(data) {
     if(messages){
@@ -391,5 +407,14 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives'])
     $timeout(function(){
       hari.messages = messages;
     });
+    for(var a in talks){
+      for (var i in messages){
+        if(a==i){
+          console.log('semelhança');
+        }
+      }
+    }
   }); 
+
+  
 });
