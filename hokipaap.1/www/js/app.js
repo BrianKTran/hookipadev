@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova'])
+angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova', 'uiGmapgoogle-maps'])
 
 .run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
@@ -426,7 +426,10 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova']
   };
 })
 
-.controller('mapCtrl', function($cordovaGeolocation, $timeout) {
+.controller('mapCtrl', function($cordovaGeolocation, $timeout, $scope) {
+  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+  
+  //getting geolocatization with ngcordova plugin
   console.log('até aqui, haribol');
   var hari = this;
    var posOptions = {timeout: 10000, enableHighAccuracy: false};
@@ -436,6 +439,7 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova']
    .then(function (position) {
       var lat  = position.coords.latitude
       hari.long = position.coords.longitude
+      $scope.map = { center: { latitude: lat, longitude: hari.long }, zoom: 20 };
       console.log(lat + '   ' )
    }, function(err) {
       console.log(err)

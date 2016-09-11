@@ -170,7 +170,4 @@ top: 250pt;
   margin-top: -25pt;
 }
 /* maps standart*/
-#map {
-    height: 100%;
-    width: 100%;
-}
+.angular-google-map-container { height: 400pt; }

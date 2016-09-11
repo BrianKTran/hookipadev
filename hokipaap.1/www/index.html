@@ -13,11 +13,17 @@
     <link href="styles/framework_unmin.css" rel="stylesheet" type="text/css">
     <link href="styles/font-awesome.css" rel="stylesheet" type="text/css">
 
-    <script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script>   
+    <script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script> 
+    <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="lib/angular-google-maps/node_modules/lodash/lodash.min.js"></script>
+   
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script type="text/javascript" src="lib/angular-google-maps/dist/angular-google-maps.min.js"></script>
     <script type="text/javascript" src="lib/ng-cordova/dist/ng-cordova.min.js"></script>
+    <script src="lib/angular-google-maps/node_modules/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
     <script src="js/ng-cordova-oauth.min.js"></script>
+    
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
     <!-- firebase scripts -->
@@ -31,4 +37,5 @@
  <ion-pane>
    <ion-nav-view></ion-nav-view>
  </ion-pane>  
+ 
 </body>
