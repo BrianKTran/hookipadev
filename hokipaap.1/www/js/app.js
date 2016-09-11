@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'firebase', 'luegg.directives'])
+angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova'])
 
 .run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
@@ -95,7 +95,9 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives'])
     url: '/location',
     views: {
       'menuContent': {
-        templateUrl: 'templates/location.html'
+        templateUrl: 'templates/location.html',
+        controller: 'mapCtrl',
+        controllerAs: 'hari'
       }
     }
   })
@@ -105,7 +107,8 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives'])
       'menuContent': {
         templateUrl: 'templates/msg.html',
         controller: 'chatController',
-        controllerAs: 'hari'
+        controllerAs: 'hari',
+        params: 'talkid'
       },
     }
   })
@@ -155,7 +158,6 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives'])
    // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/hare/login');
 })
-
 
 .controller('mainController', function($scope, $window, $state, $timeout, $stateParams, $firebaseAuth){
   console.log('Hare Krsna');
@@ -362,7 +364,7 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives'])
   };
 })
 
-.controller('chatController', function($scope, $timeout){
+.controller('chatController', function($scope, $timeout, $state, $stateParams){
   //write msg data to database
   var hari = this;
   var messages = [];
@@ -370,7 +372,10 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives'])
   var userId = firebase.auth().currentUser.uid; hari.userId = userId;
   var uname = firebase.auth().currentUser.displayName;
   var pic = firebase.auth().currentUser.photoURL;
- 
+  //get params from chat view, passing talkid
+  console.log($stateParams);
+
+
   var talkKey = firebase.database().ref().child('messages').push().key;
   this.send = function() {
       firebase.database().ref('messages/' + talkKey ).push({
@@ -416,5 +421,45 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives'])
     }
   }); 
 
-  
+  hari.goMsg = function(){ // set params when going to msg
+    $state.go('hare.messages', {talkid: 'haribol'});
+  };
+})
+
+.controller('mapCtrl', function($cordovaGeolocation, $timeout) {
+  console.log('até aqui, haribol');
+  var hari = this;
+   var posOptions = {timeout: 10000, enableHighAccuracy: false};
+   $cordovaGeolocation
+   .getCurrentPosition(posOptions)
+	
+   .then(function (position) {
+      var lat  = position.coords.latitude
+      hari.long = position.coords.longitude
+      console.log(lat + '   ' )
+   }, function(err) {
+      console.log(err)
+      hari.err = err;
+   });
+
+   var watchOptions = {timeout : 3000, enableHighAccuracy: false};
+   var watch = $cordovaGeolocation.watchPosition(watchOptions);
+	
+   watch.then(
+      null,
+		
+      function(err) {
+         console.log(err)
+      },
+		
+      function(position) {
+         var lat  = position.coords.latitude
+         this.long = position.coords.longitude
+         console.log(lat + '' )
+      }
+   );
+
+   watch.clearWatch();
+  console.log('hari, hari');
+
 });
