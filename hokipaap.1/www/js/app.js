@@ -430,11 +430,23 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
   // snapshot chefs geolocation from firebase realtime db
   firebase.database().ref('/users/').once('value').then(function(snapshot) {
      $scope.marker = [];
+      //show infoWindow at chefs marker
+      $scope.windowOptions = {
+            visible: true
+        };
+        $scope.onClick = function() {
+            $scope.windowOptions.visible = true;
+        };
+
+        $scope.closeClick = function() {
+            $scope.windowOptions.visible = false;
+        };
+
+        $scope.title = "Window Title!";
     for( var a in snapshot.val()){ // push chefs geoloc and ids to markers array
       $scope.marker.push({id: a, latitude: snapshot.val()[a].geolocation.lat , longitude: snapshot.val()[a].geolocation.long});
     }
    console.log($scope.marker);  
-    
   });
   $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 }; // set map center, any value
 
@@ -448,7 +460,7 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
    .then(function (position) {
       var lat  = position.coords.latitude;
       hari.long = position.coords.longitude;
-      $scope.map = { center: { latitude: lat, longitude: hari.long }, zoom: 10 };
+      $scope.map = { center: { latitude: lat, longitude: hari.long }, zoom: 15 };
       }, function(err) {
       console.log(err);
       hari.err = err;
@@ -473,7 +485,6 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
 
    watch.clearWatch();
   console.log('hari, hari');
-  //show chefs as markers in the map
 
 
 });
