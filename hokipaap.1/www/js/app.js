@@ -427,13 +427,17 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
 })
 
 .controller('mapCtrl', function($cordovaGeolocation, $timeout, $scope) {
-  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
-  $scope.marker = {
-        id: 0,
-        coords: {
-          latitude: 45,
-          longitude: -73
-      }};
+  // snapshot chefs geolocation from firebase realtime db
+  firebase.database().ref('/users/').once('value').then(function(snapshot) {
+     $scope.marker = [];
+    for( var a in snapshot.val()){ // push chefs geoloc and ids to markers array
+      $scope.marker.push({id: a, latitude: snapshot.val()[a].geolocation.lat , longitude: snapshot.val()[a].geolocation.long});
+    }
+   console.log($scope.marker);  
+    
+  });
+  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 }; // set map center, any value
+
   //getting geolocatization with ngcordova plugin
   console.log('até aqui, haribol');
   var hari = this;
@@ -444,16 +448,9 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
    .then(function (position) {
       var lat  = position.coords.latitude;
       hari.long = position.coords.longitude;
-      $scope.map = { center: { latitude: lat, longitude: hari.long }, zoom: 0 };
-      console.log(lat + '   ' );
-      $scope.marker = {
-        id: 0,
-        coords: {
-          latitude: lat,
-          longitude: hari.long
-      }};
-   }, function(err) {
-      console.log(err)
+      $scope.map = { center: { latitude: lat, longitude: hari.long }, zoom: 10 };
+      }, function(err) {
+      console.log(err);
       hari.err = err;
    });
 
