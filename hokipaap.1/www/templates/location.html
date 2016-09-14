@@ -1,10 +1,116 @@
 <ion-content>
     <ui-gmap-google-map center='map.center' zoom='map.zoom'>
         <ui-gmap-markers models="marker" coords="'self'" icon="'icon'" click="onClick()" events="marker.events" >
-             <ui-gmap-windows options="windowOptions" closeClick="closeClick()">
-                <div><h1>{{title}}</h1>
-                    <img class="img-small-circle" src="images/pictures/0.jpg">
-                </div>
+             <ui-gmap-windows templateUrl="profile.html" options="windowOptions" closeClick="closeClick()">
+               <div>
+                    <div><!--Enables this element to be scrolled -->
+                    <div class="content-fullscreen">
+                       <div class="page-profile">
+                            <div class="page-profile-header">
+                                 <a href="../images/pictures/5.jpg" class="show-gallery" title="Profile Image!"><img data-original="../images/pictures/5t.jpg" class="preload-image" alt="img"></a>
+                                <h3>{{hari.username}}</h3>
+                                <em>{{hari.slogan}}</em>
+                                <div class="overlay bg-black"></div>
+                                <div class="follow-buttons">
+                					<a href="#"><i class="fa fa-rss fa-2x"></i>  Follow </a>
+                					<a href="#"><i class="fa fa-comment fa-2x"></i> Message</a>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                	<div class="col-sm-4">					</div>
+                    <div class="content">
+                            <div class="page-profile">
+                                <div class="page-profile-followers">
+                                    <a href="#">
+                                       <i class="fa fa-heart fa-2x"></i>
+                						
+                                        {{hari.following}} Following
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-rss fa-2x"></i>
+                                        {{hari.followers}} Followers
+                                    </a>
+                					<a>
+                    					<i class="fa fa-star"></i>
+                    						{{hari.rate}}	Rating	
+                                    </a>
+                					</div>
+                				<div ng-if="hari.active" class="page-profile-followers">
+                				  <a alt="pic" class="img-position active-item"><i class="fa fa-circle fa-2x"></i> <p><strong>Online </strong></p></a> 
+                				</div>
+                				<div ng-if="!hari.active" class="page-profile-followers">
+                				  <a alt="pic" class="img-position "><i class="fa fa-circle fa-2x"></i> <p><strong>Online </strong></p></a> 
+                				</div>
+                
+                                <div class="decoration"></div>
+                
+                                <div class="container no-bottom">
+                                    <div class="sidebar-left-small">
+                                        <h4 class="no-bottom">Basic Info</h4>
+                                        
+                                        <ul class="font-icon-list">
+                						<li><a href="#"><i class="fa fa-briefcase"></i>{{hari.profission}}</a></li>
+                                            <li><a href="#"><i class="fa fa-phone"></i>{{hari.phone}}</a></li>
+                                            <li><a href="#"><i class="fa fa-envelope"></i>{{hari.email}}</a></li>
+                                            <li><a href="#"><i class="fa fa-dollar"></i>See Menu</a></li>
+                                            <li><a href="#"><i class="fa fa-clock-o"></i>Make Reservation</a></li>
+                                            <li><a href="#"><i class="fa fa-location-arrow"></i>{{hari.address}}</a></li>
+                                        </ul>
+                                        <br>
+                                    </div>
+                                    <div class="decoration hide-if-responsive"></div> 
+                                    <div class="actmenu">
+                                        <div class="button-bar">
+                                          <a class="button" ng-click="menu=false">Activity</a>
+                                          <a class="button"ng-click="menu=true">Menu</a>
+                                        </div>
+                                       
+                                         <div class="actmenumenu" ng-repeat="radhe in hari.menu" ng-if="menu">
+                                            
+                                            <div class="item item-toggle">
+                                                 <p class="menuTitle"><strong>{{radhe.name}}</strong></p>
+                                                 <label class="toggle toggle-assertive">
+                                                     <input type="checkbox">
+                                                     <div class="track">
+                                                         <div class="handle"></div>
+                                                      </div>
+                                                 </label>
+                                                <img class="menuImg" ng-src="radhe.picture">
+                                                <p class="menuDesc"><strong>Description: </strong><br>{{radhe.description}}</p>
+                                                <p class="menuPrice"><strong>Price: </strong>{{radhe.price | currency}}</p>
+                                                <ion-toggle ng-model="airplaneMode" toggle-class="toggle-calm" class="menuRecipe"><p><strong>Recipe: </strong><br>{{radhe.recipe}}</p></ion-toggle>
+                                                <button class="button button-small button-balanced botaoTO">Add to Order</button>
+                                                <button class="button button-small button-assertive botaoTO">Remove from Order</button>
+                                                <h4>
+                                                    <a class="add-qty" ng-click="radhe.add()"><i class="fa fa-plus"></i></a>
+                                                    <span ng-init="radhe.quantity = 0" class="qtin">{{radhe.quantity}}</span>
+                                                    <a ng-click="quantity = quantity - 1" class="substract-qty"><i class="fa fa-minus"></i></a>
+                                                </h4>
+                                                <div class="likeshare">
+                                                    <span class="menulike">{{radhe.likes}} likes</span>
+                                                    <span class="menushare">{{radhe.comments.length}} comments</span> 
+                                                </div>
+                                                <p class="menudoLCS">
+                                                    <span><i class="fa fa-thumbs-up"></i> Like </span><span> Comment </span><span><i class="fa fa-share-alt"></i> Share </span>
+                                                </p>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="actactmenu" ng-if="!menu"><h3>SOME ACTIVITY HERE</h3></div>
+                                        
+                                    </div>
+                                   
+                					<div class="decoration hide-if-responsive"></div>
+                                    <div class="sidebar-right-big">
+                                        <h4>About {{hari.username}}</h4>
+                                        <p>
+                                           {{hari.about}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
              </ui-gmap-windows>
         </ui-gmap-markers>
     </ui-gmap-google-map>
