@@ -428,7 +428,12 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
 
 .controller('mapCtrl', function($cordovaGeolocation, $timeout, $scope) {
   $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
-  
+  $scope.marker = {
+        id: 0,
+        coords: {
+          latitude: 45,
+          longitude: -73
+      }};
   //getting geolocatization with ngcordova plugin
   console.log('até aqui, haribol');
   var hari = this;
@@ -437,10 +442,16 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
    .getCurrentPosition(posOptions)
 	
    .then(function (position) {
-      var lat  = position.coords.latitude
-      hari.long = position.coords.longitude
-      $scope.map = { center: { latitude: lat, longitude: hari.long }, zoom: 20 };
-      console.log(lat + '   ' )
+      var lat  = position.coords.latitude;
+      hari.long = position.coords.longitude;
+      $scope.map = { center: { latitude: lat, longitude: hari.long }, zoom: 0 };
+      console.log(lat + '   ' );
+      $scope.marker = {
+        id: 0,
+        coords: {
+          latitude: lat,
+          longitude: hari.long
+      }};
    }, function(err) {
       console.log(err)
       hari.err = err;
@@ -465,5 +476,7 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
 
    watch.clearWatch();
   console.log('hari, hari');
+  //show chefs as markers in the map
+
 
 });
