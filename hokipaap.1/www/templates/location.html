@@ -1,6 +1,6 @@
 <ion-content>
     <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-        <ui-gmap-markers models="marker" coords="'self'" icon="'icon'" click="onClick()" events="marker.events" >
+        <ui-gmap-markers models="marker" coords="'self'" icon="'icon'" click="onClick(id)" events="marker.events" >
              <ui-gmap-windows templateUrl="profile.html" options="windowOptions" closeClick="closeClick()">
                <div>
                     <div><!--Enables this element to be scrolled -->
@@ -8,7 +8,7 @@
                        <div class="page-profile">
                             <div class="page-profile-header">
                                  <a href="../images/pictures/5.jpg" class="show-gallery" title="Profile Image!"><img data-original="../images/pictures/5t.jpg" class="preload-image" alt="img"></a>
-                                <h3>{{hari.username}}</h3>
+                                <h3>{{username}}</h3>
                                 <em>{{hari.slogan}}</em>
                                 <div class="overlay bg-black"></div>
                                 <div class="follow-buttons">
@@ -33,13 +33,13 @@
                                     </a>
                 					<a>
                     					<i class="fa fa-star"></i>
-                    						{{hari.rate}}	Rating	
+                    						{{rate}}
                                     </a>
                 					</div>
-                				<div ng-if="hari.active" class="page-profile-followers">
+                				<div ng-if="active" class="page-profile-followers">
                 				  <a alt="pic" class="img-position active-item"><i class="fa fa-circle fa-2x"></i> <p><strong>Online </strong></p></a> 
                 				</div>
-                				<div ng-if="!hari.active" class="page-profile-followers">
+                				<div ng-if="!active" class="page-profile-followers">
                 				  <a alt="pic" class="img-position "><i class="fa fa-circle fa-2x"></i> <p><strong>Online </strong></p></a> 
                 				</div>
                 
@@ -50,12 +50,12 @@
                                         <h4 class="no-bottom">Basic Info</h4>
                                         
                                         <ul class="font-icon-list">
-                						<li><a href="#"><i class="fa fa-briefcase"></i>{{hari.profission}}</a></li>
-                                            <li><a href="#"><i class="fa fa-phone"></i>{{hari.phone}}</a></li>
-                                            <li><a href="#"><i class="fa fa-envelope"></i>{{hari.email}}</a></li>
+                						<li><a href="#"><i class="fa fa-briefcase"></i>{{profission}}</a></li>
+                                            <li><a href="#"><i class="fa fa-phone"></i>{{phone}}</a></li>
+                                            <li><a href="#"><i class="fa fa-envelope"></i>{{email}}</a></li>
                                             <li><a href="#"><i class="fa fa-dollar"></i>See Menu</a></li>
                                             <li><a href="#"><i class="fa fa-clock-o"></i>Make Reservation</a></li>
-                                            <li><a href="#"><i class="fa fa-location-arrow"></i>{{hari.address}}</a></li>
+                                            <li><a href="#"><i class="fa fa-location-arrow"></i>{{address}}</a></li>
                                         </ul>
                                         <br>
                                     </div>
@@ -66,8 +66,9 @@
                                           <a class="button"ng-click="menu=true">Menu</a>
                                         </div>
                                        
-                                         <div class="actmenumenu" ng-repeat="radhe in hari.menu" ng-if="menu">
-                                            
+                                         <div class="actmenumenu"  ng-if="menu">
+                               
+                                            <!--
                                             <div class="item item-toggle">
                                                  <p class="menuTitle"><strong>{{radhe.name}}</strong></p>
                                                  <label class="toggle toggle-assertive">
@@ -95,12 +96,13 @@
                                                     <span><i class="fa fa-thumbs-up"></i> Like </span><span> Comment </span><span><i class="fa fa-share-alt"></i> Share </span>
                                                 </p>
                                             </div>
+                                            -->
                                            
                                         </div>
-                                        <div class="actactmenu" ng-if="!menu"><h3>SOME ACTIVITY HERE</h3></div>
-                                        
+                                        <div class="actactmenu" ng-if="!menu">
+                                            <h3>SOME ACTIVITY HERE</h3>
+                                         </div>
                                     </div>
-                                   
                 					<div class="decoration hide-if-responsive"></div>
                                     <div class="sidebar-right-big">
                                         <h4>About {{hari.username}}</h4>

@@ -426,7 +426,7 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
   };
 })
 
-.controller('mapCtrl', function($cordovaGeolocation, $timeout, $scope) {
+.controller('mapCtrl', function($cordovaGeolocation, $timeout, $scope, $ionicSlideBoxDelegate, $state) {
   // snapshot chefs geolocation from firebase realtime db
   firebase.database().ref('/users/').once('value').then(function(snapshot) {
      $scope.marker = [];
@@ -434,8 +434,21 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
       $scope.windowOptions = {
             visible: true
         };
-        $scope.onClick = function() {
+        $scope.onClick = function(id) {
             $scope.windowOptions.visible = true;
+            console.log(id);
+            $scope.username = snapshot.val()[id].username;
+            $scope.pic = snapshot.val()[id].picture;
+            $scope.rate = snapshot.val()[id].rate;
+            $scope.profission = snapshot.val()[id].ocupation;
+            $scope.phone = snapshot.val()[id].phone;
+            $scope.email = snapshot.val()[id].email;
+            $scope.menu = snapshot.val()[id].menu;
+            $scope.address = snapshot.val()[id].address;
+            $scope.active = snapshot.val()[id].online;
+      //      $scope.following = snapshot.val()[id].length;
+      //      $scope.followers = snapshot.val()[id].length;
+            
         };
 
         $scope.closeClick = function() {
@@ -448,7 +461,7 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
     }
    console.log($scope.marker);  
   });
-  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 }; // set map center, any value
+  $scope.map = { center: { latitude: -23.485355, longitude: -46.71833 }, zoom: 8 }; // set map center, any value (us lat = 45 , long = -73)
 
   //getting geolocatization with ngcordova plugin
   console.log('até aqui, haribol');
@@ -485,6 +498,9 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
 
    watch.clearWatch();
   console.log('hari, hari');
+ 
+  // Called to navigate to the main app
 
+  
 
 });
