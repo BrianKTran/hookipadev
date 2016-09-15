@@ -62,37 +62,61 @@
                           <a class="button" ng-click="menu=false">Activity</a>
                           <a class="button"ng-click="menu=true">Menu</a>
                         </div>
-                       
-                         <div class="actmenumenu" ng-repeat="radhe in hari.menu" ng-if="menu">
-                            
-                            <div class="item item-toggle">
-                                 <p class="menuTitle"><strong>{{radhe.name}}</strong></p>
-                                 <label class="toggle toggle-assertive">
-                                     <input type="checkbox">
-                                     <div class="track">
-                                         <div class="handle"></div>
-                                      </div>
-                                 </label>
-                                <img class="menuImg" ng-src="radhe.picture">
-                                <p class="menuDesc"><strong>Description: </strong><br>{{radhe.description}}</p>
-                                <p class="menuPrice"><strong>Price: </strong>{{radhe.price | currency}}</p>
-                                <ion-toggle ng-model="airplaneMode" toggle-class="toggle-calm" class="menuRecipe"><p><strong>Recipe: </strong><br>{{radhe.recipe}}</p></ion-toggle>
-                                <button class="button button-small button-balanced botaoTO">Add to Order</button>
-                                <button class="button button-small button-assertive botaoTO">Remove from Order</button>
-                                <h4>
-                                    <a class="add-qty" ng-click="radhe.add()"><i class="fa fa-plus"></i></a>
-                                    <span ng-init="radhe.quantity = 0" class="qtin">{{radhe.quantity}}</span>
-                                    <a ng-click="quantity = quantity - 1" class="substract-qty"><i class="fa fa-minus"></i></a>
-                                </h4>
-                                <div class="likeshare">
-                                    <span class="menulike">{{radhe.likes}} likes</span>
-                                    <span class="menushare">{{radhe.comments.length}} comments</span> 
+                         <div class="actmenumenu" ng-if="menu">
+                             <button class="button icon-left ion-plus-circled button-clear button-stable" ng-click="hari.newMenuFormShow=!hari.newMenuFormShow"><h1>ADD ITEM TO MENU</h1></button>
+                              <div ng-if="hari.newMenuFormShow" class="list">
+                                <label class="item item-input item-stacked-label">
+                                  <span class="input-label">Preparation Name</span>
+                                  <input type="text" placeholder="Delicious food name" ng-model="hari.menuitem.name">
+                                </label>
+                                <label class="item item-input item-stacked-label">
+                                  <span class="input-label">Image</span>
+                                  <input type="file">
+                                </label>
+                                <label class="item item-input item-stacked-label">
+                                  <span class="input-label">Description</span>
+                                  <input type="text" placeholder="Describe here how wonderfull you preparation is..." ng-model="hari.menuitem.desc">
+                                </label>
+                                <label class="item item-input item-stacked-label">
+                                  <span class="input-label">Recipe</span>
+                                  <textarea placeholder="Describe the ingredients and recipe for this preparation" ng-model="hari.menuitem.recipe"></textarea>
+                                </label>
+                                <label class="item item-input item-stacked-label">
+                                  <span class="input-label">Price</span>
+                                  <input type="number" placeholder="Your price in us i.e: '10' " ng-model="hari.menuitem.price">
+                                </label>
+                                <br>
+                                <button class="button button-balanced" ng-click="hari.newMenuData()">Save</button><button class="button button-danger">Cancel</button>
+                              </div>
+                            <div ng-if="!hari.newMenuFormShow" ng-repeat="radhe in hari.menu">
+                                <div class="item item-toggle">
+                                     <p class="menuTitle"><strong>{{radhe.name}}</strong></p>
+                                     <label class="toggle toggle-assertive">
+                                         <input type="checkbox">
+                                         <div class="track">
+                                             <div class="handle"></div>
+                                          </div>
+                                     </label>
+                                    <img class="menuImg" ng-src="radhe.picture">
+                                    <p class="menuDesc"><strong>Description: </strong><br>{{radhe.description}}</p>
+                                    <p class="menuPrice"><strong>Price: </strong>{{radhe.price | currency}}</p>
+                                    <ion-toggle ng-model="airplaneMode" toggle-class="toggle-calm" class="menuRecipe"><p><strong>Recipe: </strong><br>{{radhe.recipe}}</p></ion-toggle>
+                                    <button class="button button-small button-balanced botaoTO">Add to Order</button>
+                                    <button class="button button-small button-assertive botaoTO">Remove from Order</button>
+                                    <h4>
+                                        <a class="add-qty" ng-click="radhe.add()"><i class="fa fa-plus"></i></a>
+                                        <span ng-init="radhe.quantity = 0" class="qtin">{{radhe.quantity}}</span>
+                                        <a ng-click="quantity = quantity - 1" class="substract-qty"><i class="fa fa-minus"></i></a>
+                                    </h4>
+                                    <div class="likeshare">
+                                        <span class="menulike">{{radhe.likes}} likes</span>
+                                        <span class="menushare">{{radhe.comments.length}} comments</span> 
+                                    </div>
+                                    <p class="menudoLCS">
+                                        <span><i class="fa fa-thumbs-up"></i> Like </span><span> Comment </span><span><i class="fa fa-share-alt"></i> Share </span>
+                                    </p>
                                 </div>
-                                <p class="menudoLCS">
-                                    <span><i class="fa fa-thumbs-up"></i> Like </span><span> Comment </span><span><i class="fa fa-share-alt"></i> Share </span>
-                                </p>
                             </div>
-                           
                         </div>
                         <div class="actactmenu" ng-if="!menu"><h3>SOME ACTIVITY HERE</h3></div>
                         
@@ -108,30 +132,7 @@
                 </div>
             </div>
         </div>
-
-  
         <div class="content">
             <div class="decoration"></div>
         </div>
-                
-        <div class="footer">
-            <div class="footer-content">
-                <h3 class="footer-logo">Hookipa profile</h3>
-                <p class="footer-text">
-                    We aim to simplify your life by creating a beautiful and simple product that's feature rich and easy to use!
-                </p>
-            </div>
-            <div class="footer-socials">
-                <a href="#" class="scale-hover facebook-color"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="scale-hover twitter-color"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="scale-hover google-color"><i class="fa fa-google-plus"></i></a>
-                <a href="#" class="scale-hover phone-color"><i class="fa fa-phone"></i></a>
-                <a href="#" class="scale-hover mail-color"><i class="fa fa-envelope-o"></i></a>
-                <a href="#" class="scale-hover bg-night-dark back-to-top"><i class="fa fa-angle-up"></i></a>
-                <div class="clear"></div>
-            </div>
-            <p class="footer-strip">Copyright <span id="copyright-year"></span> Enabled. All Rights Reserved</p>
-        </div>
-        
-   
 </div>

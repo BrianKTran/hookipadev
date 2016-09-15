@@ -159,7 +159,7 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
   $urlRouterProvider.otherwise('/hare/login');
 })
 
-.controller('mainController', function($scope, $window, $state, $timeout, $stateParams, $firebaseAuth){
+.controller('mainController', function($scope, $window, $state, $timeout, $stateParams, $firebaseAuth, $ionicModal){
   console.log('Hare Krsna');
   
  var hari = this;
@@ -224,15 +224,6 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
            hari.following = Object.keys(fol).length; // atribute to $scope.folling the number users it follows in database  
       }); 
       
-      // code for edit profile data
-      /*
-      hari.newName = hari.username;
-      hari.newPhone = hari.phone;
-      hari.newEmail = hari.email;
-      hari.newAddress = hari.address;
-      hari.newOcupation = hari.ocupation;
-      hari.newPic = hari.image;
-      */
       hari.editProfile = function() {
           // each line'll update individual item, otherwise if updating all, other itens will be deleted.
           var updates = {};
@@ -261,7 +252,36 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
           }
           return firebase.database().ref().update(updates); // code for updating 
       };
-      // code for chat
+      //show modal prompt for new menu item
+       hari.newMenuFormShow = false; // setup show/hide new menu item form 
+       hari.newMenuData = function(){
+         var newmenuData ={
+                name : hari.menuitem.name,
+                picture: 'picture',
+                description: hari.menuitem.desc,
+                recipe: hari.menuitem.recipe,
+                price: hari.menuitem.price,
+                show: true,
+                comments: false,
+                likes: 0,
+                shares: 0
+              };
+        console.log(newmenuData);
+       };
+      // code for add menu item
+      hari.newMenuItem = function(){
+              firebase.database().ref('users/' + uid + '/menu/').push({ //newmenuData
+                name : 'bolo prassad',
+                picture: 'picture',
+                description: 'this is a nice cake that has been offered to Supreme Lord Sri Krsna. It is only for his mercy that is and ouservls exists',
+                recipe: 'make a very nice ekadasi cake and then offer to our supreme Lord <3 Hari! Hari se vara Hari ka naam',
+                price: 108,
+                show: true,
+                comments: [],
+                likes: 0,
+                shares: 0
+              });
+      };  
 
       
    // following code is for no logged users
