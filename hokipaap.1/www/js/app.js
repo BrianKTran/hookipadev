@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova', 'uiGmapgoogle-maps'])
+angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova', 'uiGmapgoogle-maps', 'ngFileUpload'])
 
 .run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
@@ -30,7 +30,6 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
         storageBucket: "hookipafirebase.appspot.com",
   };
   firebase.initializeApp(config);
-  var database = firebase.database(); 
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -159,7 +158,7 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
   $urlRouterProvider.otherwise('/hare/login');
 })
 
-.controller('mainController', function($scope, $window, $state, $timeout, $stateParams, $firebaseAuth, $ionicModal){
+.controller('mainController', function($scope, $window, $state, $timeout, $stateParams, $firebaseAuth, $ionicModal, Upload){
   console.log('Hare Krsna');
   
  var hari = this;
@@ -252,12 +251,47 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
           }
           return firebase.database().ref().update(updates); // code for updating 
       };
+  //function to add an image to fb strage so it can be uploaded into menu
+      // upload on file select or drop
+      var storage = firebase.storage();
+      
+      hari.quase=false;
+      // Create a storage reference from our storage service
+      var storageRef = storage.ref();
+      
+      // Create a child reference
+      
+      $scope.upload = function (file) {
+         console.log(file);
+         var uploadTask = storageRef.child(uid + '/menuImages/'+ file.name).put(file);
+         uploadTask.on('state_changed', function(snapshot){
+           hari.quase=true;
+            // Observe state change events such as progress, pause, and resume
+            console.log(snapshot); // b show how much has been uploaded / h show how much is the full / f shows processess running meanings still uploading 
+          }, function(error) {
+            console.log(error);
+            // Handle unsuccessful uploads
+          }, function() {
+            // Handle successful uploads on complete
+            // get the download URL: https://firebasestorage.googleapis.com/...
+            hari.pronto = true;
+            hari.quase=false;
+            var downloadURL = uploadTask.snapshot.downloadURL;
+            console.log(downloadURL);
+            hari.filepath = downloadURL;
+          });
+      };
+      // We add a message with a loading icon that will get updated with the shared image.
+      hari.addImage = function(){
+          console.log(hari.filepath);
+      };
+      // finish storage image function
       //show modal prompt for new menu item
        hari.newMenuFormShow = false; // setup show/hide new menu item form 
        hari.newMenuData = function(){
-         var newmenuData ={
+          firebase.database().ref('users/' + uid + '/menu/').push({
                 name : hari.menuitem.name,
-                picture: 'picture',
+                picture: hari.filepath,
                 description: hari.menuitem.desc,
                 recipe: hari.menuitem.recipe,
                 price: hari.menuitem.price,
@@ -265,24 +299,8 @@ angular.module('starter', ['ionic', 'firebase', 'luegg.directives', 'ngCordova',
                 comments: false,
                 likes: 0,
                 shares: 0
-              };
-        console.log(newmenuData);
+          }); 
        };
-      // code for add menu item
-      hari.newMenuItem = function(){
-              firebase.database().ref('users/' + uid + '/menu/').push({ //newmenuData
-                name : 'bolo prassad',
-                picture: 'picture',
-                description: 'this is a nice cake that has been offered to Supreme Lord Sri Krsna. It is only for his mercy that is and ouservls exists',
-                recipe: 'make a very nice ekadasi cake and then offer to our supreme Lord <3 Hari! Hari se vara Hari ka naam',
-                price: 108,
-                show: true,
-                comments: [],
-                likes: 0,
-                shares: 0
-              });
-      };  
-
       
    // following code is for no logged users
     } else {
